@@ -6,11 +6,16 @@
 [ 인텔리제이 깃허브 커밋계정 정보 ]
     1. 인텔리제이 왼쪽 하단 메뉴 [ 터미널 : alt+f12 ]
     2. 터미널 상단 [v] 아이콘 클릭 --> [ git bash ]
-    3. git config --global user.name
-    git config --global user.email
+        git config --global user.name 본인깃아이디
+        git config --global user.email 본인깃이메일
 
 [ 인텔리제이 에서 깃허브에 프로젝트 게시하기 ]
     1. 인텔리제이 상단메뉴 -> [ VCS ]
     2. [ Github 프로젝트 공유 ]
         - 저장소 이름 : 프로젝트명(*아무거나)
         - 원격 : (기본값)
+    3. 최초 커밋 파일( 메시지는 아무거나 )
+[ 커밋/푸시 하는 방법 ]
+    1. 인텔리제이 왼쪽 메뉴 -> [ 커밋 ]
+    2. 커밋할 파일들을 체크하고
+    3. [ 커밋 및 푸시 ] 클릭
