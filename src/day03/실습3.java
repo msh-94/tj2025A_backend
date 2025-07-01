@@ -138,7 +138,7 @@ public class 실습3 {//class start
 //        화씨 온도: 86.0
 //        System.out.print("섭씨 온도 : ");
 //        double d1 = scan.nextDouble();
-//        System.out.println("화씨 온도 : "+((d1*9.0) / 5.0 +32));
+//        System.out.println("화씨 온도 : "+(d1*9.0 / 5.0 + 32));
 //
 //        [문제 12] Scanner를 이용해 태어난 년도(int)를 입력받아, 2025년 기준 현재 나이를 계산하여 출력하시오.
 //        요구 조건:
