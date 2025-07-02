@@ -247,6 +247,11 @@ public class 실습4 { // class start
 //        }else {
 //            System.out.println(b3);
 //        }
+        // or
+//        byte max = b1;
+//        if(max < i2){max = i2}
+//        if(max < i3){max = i3}
+//        System.out.println(max);
 //
 //        [문제 13] Scanner를 이용해 연도(year)를 입력받아 해당 연도가 윤년인지 평년인지 판별하는 프로그램을 작성하시오.
 //        윤년 조건:
@@ -261,7 +266,7 @@ public class 실습4 { // class start
 //        int i2 = i1%4;
 //        int i3 = i1%100;
 //        int i4 = i1%400;
-//        if(i2 == 0 && i3 != 0 || i4 == 0){
+//        if((i2 == 0 && i3 != 0) || (i4 == 0)){
 //            System.out.println(i1+"년은 윤년입니다");
 //        }else{
 //            System.out.println(i1+"년은 평년입니다.");
