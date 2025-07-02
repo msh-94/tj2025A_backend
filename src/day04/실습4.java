@@ -249,14 +249,14 @@ public class 실습4 { // class start
 //        }
         // or
 //        byte max = b1;
-//        if(max < i2){max = i2}
-//        if(max < i3){max = i3}
+//        if(max < b2){max = b2}
+//        if(max < b3){max = b3}
 //        System.out.println(max);
 //
 //        [문제 13] Scanner를 이용해 연도(year)를 입력받아 해당 연도가 윤년인지 평년인지 판별하는 프로그램을 작성하시오.
 //        윤년 조건:
-//        연도가 4의 배수이면서, 100의 배수는 아닐 때
-//        또는 연도가 400의 배수일 때
+//        연도가 4의 배수이면서, 100의 배수는 아닐 때 ***
+//        ***또는 연도가 400의 배수일 때
 //        입력 예시:
 //        연도를 입력하세요: 2024
 //        출력 예시:
@@ -279,6 +279,9 @@ public class 실습4 { // class start
 //        세 번째 정수: 8
 //        출력 예시:
 //        4, 8, 17
+        // 변수들의 값 교체 (스왑=swap) : let temp = a; a = b ; b = temp;
+        // 변수란? 하나의 자료만 저장 가능한 공간 즉]a란 변수에 b값이 들어오면 기존 a값은 사라진다.
+        // 비교 : a b c : (1) a > b (2) a > c (3) b > c
 //        System.out.print("첫 번째 정수 : ");
 //        int i1 = scan.nextInt();
 //        System.out.print("두 번째 정수 : ");
@@ -316,6 +319,13 @@ public class 실습4 { // class start
 //                System.out.print(i1);
 //            }
 //        }
+        // or
+        /*
+         if( i1 > i2 ){ int temp = i1; i1 = i2; i2 = temp; }
+         if( i1 > i3 ){ int temp = i1; i1 = i3; i3 = temp; }
+         if( i2 > i3 ){ int temp = i2; i2 = i3; i3 = temp; }
+         System.out.printf("%d -> %d -> %d \n" , i1 , i2 , i3);
+        */
 
 //
 //        [문제 15] 가위바위보 게임
@@ -330,6 +340,8 @@ public class 실습4 { // class start
 //        플레이어2 (0:가위, 1:바위, 2:보): 0
 //        출력 예시:
 //        플레이어1 승리
+        // 방법1 : i1 이기는 조건 ( i1 = 0 && i2 = 2 , i1 = 1 && i2 = 0 , i1 = 2 && i2 = 1 )
+        // 방법2 : i1 이기는 조건 (i1 == (i2 + 1) % 3)
 //        System.out.print("플레이어1 (0:가위, 1:바위, 2:보) : ");
 //        int i1 = scan.nextInt();;
 //        System.out.print("플레이어2 (0:가위, 1:바위, 2:보) : ");
@@ -349,6 +361,13 @@ public class 실습4 { // class start
 //        } else if (i1 == 1 && i2 == 2) {
 //            System.out.println("플레이어2 승리");
 //        }
+        // or
+        /*
+             if((i1 = 0 && i2 = 2) || ( i1 = 1 && i2 = 0 ) || (  i1 = 2 && i2 = 1 )){System.out.println("플레이어1 승리");}
+             else if(i1 == i2 ){  System.out.println("무승부"); }
+             else{ System.out.println("플레이어2 승리"); }
+        */
+
 
     }// main end
 }// class end
