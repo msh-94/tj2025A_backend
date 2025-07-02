@@ -190,15 +190,15 @@ public class 실습4 { // class start
 //        출력 예시:
 //        최종 결제 금액: 54000원
 //        System.out.print("총 구매 금액 : ");
-//        long l1 = scan.nextLong();
-//        if(l1 >= 50000){
-//            System.out.println(l1-(l1/10)+"원");
-//        } else if (l1 >= 30000) {
-//            System.out.println(l1-(l1/20)+"원");
-//        } else if (l1 >= 10000) {
-//            System.out.println(l1-((l1/10)/10)+"원");
+//        int i1 = scan.nextInt();
+//        if(i1 >= 50000){
+//            System.out.println(i1 * 0.9+"원");
+//        } else if (i1 >= 30000) {
+//            System.out.println(i1 * 0.95+"원");
+//        } else if (i1 >= 10000) {
+//            System.out.println(i1 * 0.99+"원");
 //        }else {
-//            System.out.println(l1);
+//            System.out.println(i1);
 //        }
 //
 //        [문제 11] 1부터 12 사이의 월(Month)을 숫자로 입력받아, 해당하는 계절을 출력하는 프로그램을 작성하시오. 만약 1~12 이외의 숫자를 입력하면 '잘못된 월입니다.'를 출력하세요.
@@ -212,15 +212,20 @@ public class 실습4 { // class start
 //        가을
 //        System.out.print("월(1~12)을 입력하세요 : ");
 //        byte b1 = scan.nextByte();
-//        if(b1 >= 3 && b1 <= 5){
+//        if (b1 <= 0 || b1 >=13){
+//            System.out.println("잘못된 월입니다.");
+//        }
+//        else if(b1 >= 3 && b1 <= 5){
 //            System.out.println("봄");
 //        } else if (b1 >= 6 && b1 <= 8) {
 //            System.out.println("여름");
 //        } else if (b1 >= 9 && b1 <= 11) {
 //            System.out.println("가을");
-//        }else if (b1 == 12 || b1 >= 1){
+//        }else{
 //            System.out.println("겨울");
 //        }
+
+
 //
 //        [문제 12] Scanner를 이용해 서로 다른 세 개의 정수를 입력받아, 가장 큰 수를 출력하는 프로그램을 작성하시오.
 //        입력 예시:
