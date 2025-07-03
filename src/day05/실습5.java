@@ -159,22 +159,22 @@ public class 실습5 {//class start
 //        System.out.print("1주차 : ");
 //        for (int i = 1; i <= in1; i++){
 //            System.out.print("■");
-//        }// for end
+//        }// for1 end
 //        System.out.printf("%d만원\n" , i1);
 //        System.out.print("2주차 : ");
 //        for (int a = 1; a <= in2; a++){
 //            System.out.print("■");
-//        }// for end
+//        }// for2 end
 //        System.out.printf("%d만원\n" , i2);
 //        System.out.print("3주차 : ");
 //        for (int i = 1; i <= in3; i++){
 //            System.out.print("■");
-//        }// for end
+//        }// for3 end
 //        System.out.printf("%d만원\n" , i3);
 //        System.out.print("4주차 : ");
 //        for (int i = 1; i <= in4; i++){
 //            System.out.print("■");
-//        }// for end
+//        }// for4 end
 //        System.out.printf("%d만원\n" , i4);
 
 
@@ -226,8 +226,8 @@ public class 실습5 {//class start
 //            }else if (i1 == 4){
 //                System.out.print("프로그램을 종료합니다.");
 //                break;
-//            }
+//            }// if end
 //
-//        }
+//        } // for end
     }// main end
 }// class end
