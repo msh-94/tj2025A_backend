@@ -228,6 +228,6 @@ public class 실습5 {//class start
 //                System.out.print("프로그램을 종료합니다.");
 //                break;
 //            }else{ System.out.println("잘못입력하셨습니다.");} // if end
-        } // for end
+//        } // for end
     }// main end
 }// class end
