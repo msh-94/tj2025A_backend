@@ -209,7 +209,7 @@ public class 실습5 {//class start
 //        int balance = 0;
 //        for (; ; ){
 //            System.out.println("---------------------------------");
-//            System.out.print("1:입금 | 2:출금 | 3:잔고 | 4:종료\n");
+//            System.out.println("1:입금 | 2:출금 | 3:잔고 | 4:종료");
 //            System.out.println("---------------------------------");
 //            System.out.print("선택 >");
 //            int i1 = scan.nextInt();
