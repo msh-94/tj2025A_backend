@@ -220,13 +220,14 @@ public class 실습5 {//class start
 //            } else if (i1 == 2) {
 //                System.out.print("출금액>");
 //                int i3 = scan.nextInt();
-//                balance -= i3;
+//                if(i3 <= balance){balance -= i3;}
+//                else { System.out.println("[안내] 잔고가 부족합니다."); }
 //            }else if (i1 == 3){
 //                System.out.printf("잔고> %d\n",balance);
 //            }else if (i1 == 4){
 //                System.out.print("프로그램을 종료합니다.");
 //                break;
 //            }else{ System.out.println("잘못입력하셨습니다.");} // if end
-//        } // for end
+        } // for end
     }// main end
 }// class end
