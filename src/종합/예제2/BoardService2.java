@@ -72,15 +72,16 @@ public class BoardService2 {//  class start
                 String content = scan.next();
                 System.out.print("작성자 : ");
                 String writer = scan.next();
+                boolean check = false; // false 저장실패 , true 저장성공
                 for (int i = 0; i <= contents.length-1; i++){
                     if (contents[i] == null){
                         contents[i] = content; writers[i] = writer;
-                        System.out.println("[안내] 글쓰기 성공");
+                        check = true;
                         break;
-                    }else {
-                        System.out.println("[경고] 게시물을 등록할 공간이 부족합니다.");
                     }// if end
                 }// for end
+                if (check){System.out.println("[안내] 글쓰기 성공");}
+                else { System.out.println("[경고] 게시물을 등록할 공간이 부족합니다.");} // 배열이라서 for 문 밖에서
             } else if (i1 == 2) {
                 System.out.println("============= 게시물 목록 =============");
                 for (int a = 0; a <= contents.length-1; a++){
