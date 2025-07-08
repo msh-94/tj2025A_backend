@@ -142,8 +142,8 @@ public class 실습6 {// class start
         //        추가 요금: 30분 초과 시, 매 10분마다 500원씩 추가
         //        일일 최대 요금: 20,000원 (아무리 오래 주차해도 20,000원을 초과할 수 없음)
         //        선언 코드:
-                String[] carNumbers = {"210어7125", "142가7415", "888호8888", "931나8234"};
-                int[] usageMinutes = {65, 30, 140, 420};
+                String[] carNumbers = {"210어7125", "142가7415", "888호8888", "931나8234" };
+                int[] usageMinutes = {65, 30, 140, 420 };
         //        출력 예시:
         //        210어7125: 65분 주차, 최종 요금: 2500원
         //        142가7415: 30분 주차, 최종 요금: 1000원
@@ -155,12 +155,18 @@ public class 실습6 {// class start
                     int min = usageMinutes[i];
                     System.out.print(min+"분 주차, ");
                     int over = (min-30)/10;
-                    if ((over*500)+1000 < 20000){
-                        System.out.print("최종 요금:"+((over*500)+1000)+"원");
-                    }else {
-                        System.out.print("최종 요금: 20000원");
+                    int money = 0;
+                    if (min < 30 ){
+                        money = 1000;
+                        System.out.print("최종 요금: "+money+"원");
+                    }else if ((over*500)+1000 < 20000){
+                        System.out.print("최종 요금: "+((over*500)+1000)+"원");
+                    } else if ((over*500)+1000 >= 20000) {
+                        money = 20000;
+                        System.out.print("최종 요금: "+money+"원");
                     }
                     System.out.println();
+
                 }//for end
 
     }// main end
