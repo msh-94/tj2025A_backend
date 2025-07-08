@@ -22,10 +22,8 @@ public class 실습8 { // 클래스 시작
         }// if end
         // [문제5]
         Lamp l1 = new Lamp();
-        boolean b1 = l1.turnOn();
-        System.out.println(b1);
-        boolean b2 = l1.turnOff();
-        System.out.println(b2);
+        l1.turnOn();
+        l1.turnOff();
         // [문제6]
         Product p2 = new Product();
         p2.stock = 10;
