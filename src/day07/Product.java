@@ -12,8 +12,8 @@ public class Product { // 클래스 시작
         }else {
             System.out.println("재고 부족");
             return false;
-        }
-    }
+        }// if end
+    }// 메소드 끝
 
 
 }// 클래스 끝

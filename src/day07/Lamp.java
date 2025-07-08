@@ -9,5 +9,5 @@ public class Lamp {// 클래스 시작
     boolean turnOff(){
         isOn = false;
         return isOn;
-    }
+    }// 메소드 끝
 }// 클래스 끝
