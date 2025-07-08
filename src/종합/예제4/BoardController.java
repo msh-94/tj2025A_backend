@@ -2,7 +2,6 @@ package 종합.예제4;// 패키지명
 
 public class BoardController { // BoardController 클래스 시작(로직/제어담당)
     Board[] boards = new Board[100]; // 멤버 변수
-    boolean check = false;
     // 메소드
     boolean doPost(String content , String writer){ // 등록 메소드
         Board b1 = new Board();
@@ -11,12 +10,10 @@ public class BoardController { // BoardController 클래스 시작(로직/제어
         for (int i = 0; i < boards.length; i++){
             if (boards[i] == null){
                 boards[i] = b1;
-                check = true;
-            }else {
-                check = false;
+                return true;
             }// if end
         }// for end
-         return check;
+        return false;
     }// doPost 메소드 끝
 
     Board[] doGet(){// 조회 메소드
