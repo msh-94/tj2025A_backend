@@ -52,6 +52,12 @@ public class Example1 {//class 시작
         //cal1.printSum(3.14 , 5.1); // 오류발생 , 인수값과 매개변수 타입이 불일치
         cal2.printSum(10 , 2 );
 
+        // [6] 매개변수o , 반환값o
+        int result2 = cal1.add(10 , 3);
+        // int : .add 함수의 반환값 타입이 int 라서
+        //int result3 = cal1.add("안녕",1);
+        // 오류발생 : 인수값 과 매개변수의 타입 일치 해야한다
+
     } // 메인 끝
 
 

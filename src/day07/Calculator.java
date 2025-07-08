@@ -39,4 +39,17 @@ public class Calculator { // 클래스 시작
             return;
         }
     }// func end
+
+    // (4) 매개변수o , 반환값o
+    int add(int x , int y){
+        if (isPowerOn){
+            int result = x + y;
+            System.out.println(result);
+            return result;
+        // return 값 : 메소드를 호출했던 곳으로 반환되는 값
+        }else {
+            System.out.println("전원이 꺼져있습니다.");
+            return 0;
+        }
+    }
 }// 클래스 끝
