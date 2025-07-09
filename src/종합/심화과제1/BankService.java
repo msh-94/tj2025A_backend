@@ -46,7 +46,7 @@ public class BankService {// 클래스 시작
                 int i5 = scan.nextInt();
                 System.out.print("출금액 : ");
                 int i6 = scan.nextInt();
-                if (controller.inMoney(s3,i5,i6)){
+                if (controller.outMoney(s3,i5,i6)){
                     System.out.println("[안내] 출금이 완료되었습니다.");
                 } else if (controller.outMoney(s3,i5,i6)) {
                     System.out.println("[경고] 잔액이 부족합니다.");
