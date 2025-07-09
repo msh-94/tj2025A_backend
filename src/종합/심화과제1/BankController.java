@@ -47,7 +47,7 @@ public class BankController {// 클래스 시작
         ac1.비밀번호 = 비밀번호;
         for (int i = 0; i < accounts.length; i++){
             if (accounts[i] == ac1){
-                if (ac1.잔액 > 출금액){
+                if (ac1.잔액 >= 출금액){
                     ac1.잔액 = ac1.잔액 - 출금액;
                     return 0;
                 }else if (ac1.잔액 < 출금액){
