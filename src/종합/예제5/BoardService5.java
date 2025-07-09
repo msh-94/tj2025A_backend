@@ -28,8 +28,8 @@ public class BoardService5 { // 클래스 시작
                 Board[] boards = bs.doGet();
                 for (int a = 0; a <= boards.length-1; a++) {
                     if (boards[a] != null) {
-                        System.out.printf("작성자 : %s\n",boards[a].content );
-                        System.out.printf("내용 : %s\n",boards[a].writer );
+                        System.out.printf("작성자 : %s\n",boards[a].writer );
+                        System.out.printf("내용 : %s\n",boards[a].content );
                         System.out.println("------------------------------------");
                     }// if end
                 }// for end
