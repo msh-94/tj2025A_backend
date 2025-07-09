@@ -59,8 +59,9 @@ public class BankService {// 클래스 시작
                 String s4 = scan.next();
                 System.out.print("비밀번호 : ");
                 int i7 = scan.nextInt();
-                if (controller.getMoney(s4,i7)){
-                    System.out.println("[잔고] "+controller.ac1.잔액+"원");
+                int result = controller.getMoney(s4,i7);
+                if (result != 1){
+                    System.out.println("[잔고] "+result+"원");
                 }else {
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다");
                 }// if end
