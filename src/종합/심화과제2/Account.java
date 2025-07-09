@@ -8,11 +8,4 @@ public class Account { // 클래스 시작
         this.계좌번호 = 계좌번호;
         this.비밀번호 = 비밀번호;
     }// 생성자1 끝
-
-    Account(String 계좌번호){
-        this.계좌번호 = 계좌번호;
-    }// 생성자2 끝
-
-
-
 } // 클래스 끝

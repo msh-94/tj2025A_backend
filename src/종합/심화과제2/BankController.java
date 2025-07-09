@@ -14,21 +14,18 @@ public class BankController { // 클래스 시작
     }// 등록 메소드 끝
 
     boolean inMoney(String 계좌번호 , int 비밀번호,int 입금액){
-
         for (int i = 0; i < accounts.length; i++){
             if (accounts[i] != null){
                 if (accounts[i].계좌번호.equals(계좌번호) && accounts[i].비밀번호 == 비밀번호){
                     accounts[i].잔고 += 입금액;
                     return true;
                 }// if end
-
             }// if end
         }// for end
         return false;
     }// 입금 메소드 끝
 
     int outMoney(String 계좌번호 , int 비밀번호,int 출금액){
-
         for (int i = 0; i < accounts.length; i++){
             if (accounts[i] != null){
                 if (accounts[i].계좌번호.equals(계좌번호) && accounts[i].비밀번호 == 비밀번호){
@@ -51,8 +48,7 @@ public class BankController { // 클래스 시작
                 if (accounts[i].계좌번호.equals(계좌번호) && accounts[i].비밀번호 == 비밀번호){
                     return accounts[i].잔고;
                 }// if end
-            }
-
+            }// if end
         }// for end
         return 1;
     }// 잔고조회 메소드 끝
