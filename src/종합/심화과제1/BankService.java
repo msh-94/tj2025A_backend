@@ -60,7 +60,7 @@ public class BankService {// 클래스 시작
                 System.out.print("비밀번호 : ");
                 int i7 = scan.nextInt();
                 if (controller.getMoney(s4,i7)){
-                    ???????????????????
+                    System.out.println("[잔고] "+controller.ac1.잔액+"원\n");
                 }else {
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다");
                 }

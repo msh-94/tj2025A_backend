@@ -2,8 +2,9 @@ package 종합.심화과제1;// 패키지명
 
 public class BankController {// 클래스 시작
     Account[] accounts = new Account[100]; // 100개의 계좌 배열 멤버변수
+    Account ac1 = new Account();
     boolean addBank(String 계좌번호 , int 비밀번호){
-        Account ac1 = new Account();
+
         ac1.계좌번호 = 계좌번호;
         ac1.비밀번호 = 비밀번호;
         for (int i = 0; i < accounts.length; i++){
@@ -16,7 +17,7 @@ public class BankController {// 클래스 시작
     }// 등록 메소드 끝
 
     boolean getMoney(String 계좌번호 , int 비밀번호){
-        Account ac1 = new Account();
+
         ac1.계좌번호 = 계좌번호;
         ac1.비밀번호 = 비밀번호;
         for (int i = 0; i < accounts.length; i++){
@@ -28,7 +29,7 @@ public class BankController {// 클래스 시작
     }// 잔고 조회 메소드 끝
 
     boolean inMoney(String 계좌번호 , int 비밀번호 , int 입금액){
-        Account ac1 = new Account();
+
         ac1.계좌번호 = 계좌번호;
         ac1.비밀번호 = 비밀번호;
         for (int i = 0; i < accounts.length; i++){
@@ -41,7 +42,7 @@ public class BankController {// 클래스 시작
     }// 입금 메소드 끝
 
     boolean outMoney(String 계좌번호 , int 비밀번호 , int 출금액){
-        Account ac1 = new Account();
+
         ac1.계좌번호 = 계좌번호;
         ac1.비밀번호 = 비밀번호;
         for (int i = 0; i < accounts.length; i++){
@@ -55,7 +56,7 @@ public class BankController {// 클래스 시작
             }// if end
         }// for end
         return  false;
-    }// 입금 메소드 끝
+    }// 출금 메소드 끝
 
 
 
