@@ -18,5 +18,5 @@ public class BoardController { // BoardController 클래스 시작(로직/제어
 
     Board[] doGet(){// 조회 메소드
         return boards;
-    }
+    } // 조회 메소드 끝
 }// BoardController 클래스 끝
