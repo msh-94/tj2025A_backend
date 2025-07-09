@@ -67,10 +67,7 @@ public class 실습9 {// 클래스 시작
         int i2 = scan.nextInt();
         System.out.print("mbti : ");
         String s2 = scan.next();
-        UserProfile u1 = new UserProfile();
-        u1.name = s1;
-        u1.age = i2;
-        u1.mbti = s2;
+        UserProfile u1 = new UserProfile(s1 , i2 ,s2);
         System.out.print(u1.name);
         System.out.print(u1.age);
         System.out.println(u1.mbti);
