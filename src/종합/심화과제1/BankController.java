@@ -41,7 +41,7 @@ public class BankController {// 클래스 시작
         return  false;
     }// 입금 메소드 끝
 
-    boolean outMoney(String 계좌번호 , int 비밀번호 , int 출금액){
+    int outMoney(String 계좌번호 , int 비밀번호 , int 출금액){
 
         ac1.계좌번호 = 계좌번호;
         ac1.비밀번호 = 비밀번호;
@@ -49,13 +49,13 @@ public class BankController {// 클래스 시작
             if (accounts[i] == ac1){
                 if (ac1.잔액 > 출금액){
                     ac1.잔액 = ac1.잔액 - 출금액;
-                    return true;
+                    return 0;
                 }else if (ac1.잔액 < 출금액){
-                    return true;
+                    return 1;
                 }// if end
             }// if end
         }// for end
-        return  false;
+        return  2;
     }// 출금 메소드 끝
 
 

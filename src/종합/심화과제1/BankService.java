@@ -46,11 +46,11 @@ public class BankService {// 클래스 시작
                 int i5 = scan.nextInt();
                 System.out.print("출금액 : ");
                 int i6 = scan.nextInt();
-                if (controller.outMoney(s3,i5,i6)){
+                if (controller.outMoney(s3,i5,i6) == 0){
                     System.out.println("[안내] 출금이 완료되었습니다.");
-                } else if (controller.outMoney(s3,i5,i6)) {
+                } else if (controller.outMoney(s3,i5,i6) == 1) {
                     System.out.println("[경고] 잔액이 부족합니다.");
-                } else {
+                } else if (controller.outMoney(s3,i5,i6) == 2){
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다");
                 }// if end
             }else if (i1 == 4){
@@ -60,11 +60,11 @@ public class BankService {// 클래스 시작
                 System.out.print("비밀번호 : ");
                 int i7 = scan.nextInt();
                 if (controller.getMoney(s4,i7)){
-                    System.out.println("[잔고] "+controller.ac1.잔액+"원\n");
+                    System.out.println("[잔고] "+controller.ac1.잔액+"원");
                 }else {
                     System.out.println("[경고] 계좌정보가 일치하지 않습니다");
-                }
-            }
+                }// if end
+            }// if end
         }// for end
     }// 메인 끝
 }// 클래스 끝
