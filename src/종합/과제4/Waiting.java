@@ -26,4 +26,12 @@ public class Waiting { // class start
     public void setCount(int count) {
         this.count = count;
     }// count setter end
+
+    @Override
+    public String toString() {
+        return "Waiting{" +
+                "phone='" + phone + '\'' +
+                ", count=" + count +
+                '}';
+    }// toString end
 } // class end
