@@ -15,7 +15,7 @@ public class 실습10 { // 클래스 시작
         System.out.println(b1.getAccountNumber());
         // [문제4]
         CircleCalculator c1 = new CircleCalculator();
-        System.out.println(c1.printCircleArea(5));
+        c1.printCircleArea(5);
         // [문제5]
         TicketMachine machine1 = new TicketMachine();
         TicketMachine machine2 = new TicketMachine();
