@@ -33,9 +33,9 @@ public class Example1 { // 클래스 시작
             1. 정의 : 클래스내 private 멤버변수를 다른 클래스가 사용할 수 있도록 정의함수
             2. 관례적으로
                 1) 저장/대입 목적 : setter
-                public void set멤버변수(타입 매개변수){
-                    this.멤버변수명 = 매개변수;
-                }
+                    public void set멤버변수(타입 매개변수){
+                        this.멤버변수명 = 매개변수;
+                    }
                 2) 호출/반환 목적 : getter
                     public 반환타입 get멤버변수명( ){
                         return 멤버변수명;
