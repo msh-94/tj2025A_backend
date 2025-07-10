@@ -41,6 +41,7 @@ public class Example1 { // 클래스 시작
         C c = new C();
         // System.out.println(c.비공개변수); // 오류발생
         System.out.println(c.반환메소드()); // 가능
+        // c.저장메소드( 3 ); // 오류발생
 
     }// main 끝
 }// 클래스 끝
