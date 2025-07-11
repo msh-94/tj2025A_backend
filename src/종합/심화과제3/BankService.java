@@ -76,7 +76,7 @@ public class BankService { // class start
                 System.out.print("비밀번호 : ");
                 int pw3 = scan.nextInt();
                 AccountLog result = bco.getAccountLogs(s4,pw3);
-                System.out.println(result);
+                System.out.println(result.get시간()+"\t"+result.get내역()+" | "+ result.get입출금() +" | 잔액: " +result.get현재잔액()+"원");
             }// if end
         }// for end
 
