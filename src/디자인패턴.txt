@@ -59,3 +59,19 @@
                 사용자(VIEW) ----DTO----> controller ----DTO----> model(DAO)
             주문 응답 : 콜라 하나 줄게요.
                 사용자(VIEW) <----DTO---- controller <----DTO---- model(DAO)
+    9. 파일/폴더 MVC 기준 구분
+        - 프로젝트 폴더
+            - controller 폴더
+                MemberController
+                BoardController
+            - model 폴더
+                -> dao 폴더
+                    MemberDao
+                    BoardDao
+                -> dto 폴더
+                    MemberDto
+                    BoardDao
+            - view 폴더 * 추후에 HTML 로 변경된다.
+                Memberview
+                BoardView
+            - AppStart 클래스
