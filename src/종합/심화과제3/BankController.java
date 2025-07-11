@@ -42,7 +42,14 @@ public class BankController {// class start
         result.set잔액(result.get잔액()+입금액);
         AccountLog accountLog = plusLog(계좌번호,비밀번호);
         AccountLog a1 = new AccountLog(nowDate(),"입금","+"+입금액,result.get잔액());
-        accountLog = a1;
+        for( int i = 0 ; i < result.getAccountLogs().length ; i++ ){
+            AccountLog log = result.getAccountLogs()[i];
+            if( log == null){
+                result.getAccountLogs()[i] = a1;
+                break;
+            }
+        }
+
         return 1;
 
     }// 입금 메소드 end
