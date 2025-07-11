@@ -5,6 +5,12 @@ package 종합.예제7.model.dao; // 패키지명
 import 종합.예제7.model.dto.BoardDto;
 
 public class BoardDao { // class start
+    // * (싱글톤)
+    private BoardDao(){}
+    private static final BoardDao bdo = new BoardDao();
+    public static BoardDao getInstance(){
+        return bdo;
+    } // func end
 
     // * 데이터베이스 : 추후에 데이터베이스로 변경할 예정
     private BoardDto[] boardDB = new BoardDto[100];
@@ -18,8 +24,11 @@ public class BoardDao { // class start
             }// if end
         }// for end
         return false;   // 실패의 의미로 'false' 반환
-    }
+    } // func end
     // 2. 조회 처리 메소드 : controller로 부터 모든 db(배열)을 반환 한다.
         // 매개변수 : x , 반환값 : BoardDto[]
+    public BoardDto[] boarPrint(){
+        return boardDB;
+    } // func end
 
 } // class end
