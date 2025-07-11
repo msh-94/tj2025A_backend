@@ -88,6 +88,7 @@ public class BankController {// class start
                             aclog1.set내역("이체");
                             aclog1.set현재잔액(ac1.get잔액());
                             aclog1.set입출금("+"+이체금액);
+                            accountLogs[a] = aclog1;
                             return 1;
                         }// if end
                     }// for end
