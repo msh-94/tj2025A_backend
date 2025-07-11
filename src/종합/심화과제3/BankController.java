@@ -41,6 +41,7 @@ public class BankController {// class start
 
         Account result = check(계좌번호,비밀번호);
         result.set잔액(result.get잔액()+입금액);
+        Account[] result1 = logAraay(nowDate(),"입금","+"+입금액,result.get잔액());
         result.setAccountLogs();
         return 1;
     }// 입금 메소드 end
@@ -109,7 +110,11 @@ public class BankController {// class start
         return null;
     }// 로그조회 메소드 end
 
-
+    public Account[] logAraay(String 시간 , String 내역 , String 입출금 , int 현재잔액){
+        String s1 = 시간+"\t"+내역+"\t"+입출금+"\t"+현재잔액;
+        Account[] ac1 = new Account();
+        return ac1;
+    }// func end
 
 
 }// class end
