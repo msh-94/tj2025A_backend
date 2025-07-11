@@ -13,6 +13,10 @@ public class AccountLog { // class start
 
     }// 기본생성자
 
+    public AccountLog(String 계좌번호) {
+        this.계좌번호 = 계좌번호;
+    }// 계좌번호 생성자
+
     public AccountLog(String 계좌번호 , int 비밀번호){
         this.계좌번호 = 계좌번호;
         this.비밀번호 = 비밀번호;

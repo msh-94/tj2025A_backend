@@ -37,13 +37,13 @@ public class BankController {// class start
 
     // 입금메소드
     public int inMoney(String 계좌번호 , int 비밀번호 , int 입금액){
-        AccountLog aclog = new AccountLog(계좌번호,비밀번호);
+
         Account result = check(계좌번호,비밀번호);
         result.set잔액(result.get잔액()+입금액);
-        aclog.set내역("입금");
-        aclog.set입출금("+"+입금액);
-        aclog.set현재잔액(result.get잔액());
-        aclog.set시간(nowDate());
+        addLog(계좌번호,비밀번호).set내역("입금");
+        addLog(계좌번호,비밀번호).set입출금("+"+입금액);
+        addLog(계좌번호,비밀번호).set현재잔액(result.get잔액());
+        addLog(계좌번호,비밀번호).set시간(nowDate());
         return 1;
     }// 입금 메소드 end
 
@@ -51,11 +51,11 @@ public class BankController {// class start
     public int outMoney(String 계좌번호,int 비밀번호,int 출금액){
         if (check(계좌번호,비밀번호).get잔액() >= 출금액){
             check(계좌번호,비밀번호).set잔액(check(계좌번호,비밀번호).get잔액() - 출금액);
-            AccountLog aclog = new AccountLog(계좌번호,비밀번호);
-            aclog.set내역("출금");
-            aclog.set입출금("-"+출금액);
-            aclog.set시간(nowDate());
-            aclog.set현재잔액(check(계좌번호,비밀번호).get잔액());
+
+            addLog(계좌번호,비밀번호).set내역("출금");
+            addLog(계좌번호,비밀번호).set입출금("-"+출금액);
+            addLog(계좌번호,비밀번호).set시간(nowDate());
+            addLog(계좌번호,비밀번호).set현재잔액(check(계좌번호,비밀번호).get잔액());
             return 1;
         } else if (check(계좌번호,비밀번호).get잔액() < 출금액) {
             return 2;
@@ -72,22 +72,25 @@ public class BankController {// class start
     public int postMoney(String 보내는분 , int 비밀번호 , String 받는분 , int 이체금액){
         Account ac = check(보내는분 ,비밀번호);
         Account ac1 = new Account(받는분);
-        AccountLog aclog = new AccountLog(보내는분,비밀번호);
-        AccountLog aclog1 = new AccountLog(받는분,비밀번호);
+        AccountLog aclog1 = new AccountLog(받는분);
         for (int i = 0; i < accounts.length; i++){
-            if (accounts[i].equals(ac1)){
+            if (accounts[i].get계좌번호().equals(ac1.get계좌번호())){
                 if (ac.get잔액() >= 이체금액){
-                    ac.set잔액(ac.get잔액() - 이체금액);
-                    ac1.set잔액(ac1.get잔액()+이체금액);
-                    aclog.set시간(nowDate());
-                    aclog.set내역("이체");
-                    aclog.set현재잔액(ac.get잔액());
-                    aclog.set입출금("-"+이체금액);
-                    aclog1.set시간(nowDate());
-                    aclog1.set내역("이체");
-                    aclog1.set현재잔액(ac1.get잔액());
-                    aclog1.set입출금("+"+이체금액);
-                    return 1;
+                    for (int a = 0; a < accountLogs.length; a++){
+                        if (accountLogs[a] == null){
+                            ac.set잔액(ac.get잔액() - 이체금액);
+                            accounts[i].set잔액(accounts[i].get잔액()+이체금액);
+                            addLog(보내는분,비밀번호).set시간(nowDate());
+                            addLog(보내는분,비밀번호).set내역("이체");
+                            addLog(보내는분,비밀번호).set현재잔액(ac.get잔액());
+                            addLog(보내는분,비밀번호).set입출금("-"+이체금액);
+                            aclog1.set시간(nowDate());
+                            aclog1.set내역("이체");
+                            aclog1.set현재잔액(ac1.get잔액());
+                            aclog1.set입출금("+"+이체금액);
+                            return 1;
+                        }// if end
+                    }// for end
                 } else if (ac.get잔액() < 이체금액) {
                     return 2;
                 }// if end
@@ -106,15 +109,22 @@ public class BankController {// class start
     }// 날짜등록 메소드 end
 
     // 로그 조회 메소드
-    public boolean getAccountLogs(){
-        for (int i = 0; i < accountLogs.length; i++){
-            if (accountLogs[i] != null){
-                return true;
-            }// if end
-        }// for end
-        return false;
+    public AccountLog getAccountLogs(String 계좌번호 , int 비밀번호){
+
+        return AccountLog(계좌번호,비밀번호);
+
     }// 로그조회 메소드 end
 
+    public AccountLog addLog(String 계좌번호,int 비밀번호){
+        AccountLog aclog = new AccountLog(계좌번호,비밀번호);
+        for (int i = 0 ; i < accountLogs.length; i++){
+            if (accountLogs[i] == null){
+                accountLogs[i] = aclog;
+                return accountLogs[i];
+            }// if end
+        }// for end
+        return null;
+    }// log 메소드 end
 
 
 
