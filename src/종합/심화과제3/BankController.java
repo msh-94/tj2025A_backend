@@ -38,19 +38,21 @@ public class BankController {// class start
 
     // 입금메소드
     public int inMoney(String 계좌번호 , int 비밀번호 , int 입금액){
-
         Account result = check(계좌번호,비밀번호);
         result.set잔액(result.get잔액()+입금액);
-        Account[] result1 = logAraay(nowDate(),"입금","+"+입금액,result.get잔액());
-        result.setAccountLogs();
+        AccountLog accountLog = plusLog(계좌번호,비밀번호);
+        AccountLog a1 = new AccountLog(nowDate(),"입금","+"+입금액,result.get잔액());
+        accountLog = a1;
         return 1;
+
     }// 입금 메소드 end
 
     // 출금 메소드
     public int outMoney(String 계좌번호,int 비밀번호,int 출금액){
         if (check(계좌번호,비밀번호).get잔액() >= 출금액){
             check(계좌번호,비밀번호).set잔액(check(계좌번호,비밀번호).get잔액() - 출금액);
-            addLog(계좌번호,비밀번호).setLog(nowDate(),"출금","-"+출금액,check(계좌번호,비밀번호).get잔액());
+            AccountLog accountLog = plusLog(계좌번호,비밀번호);
+            accountLog = new AccountLog(nowDate(),"출금","-"+출금액,check(계좌번호,비밀번호).get잔액());
             return 1;
         } else if (check(계좌번호,비밀번호).get잔액() < 출금액) {
             return 2;
@@ -67,19 +69,19 @@ public class BankController {// class start
     public int postMoney(String 보내는분 , int 비밀번호 , String 받는분 , int 이체금액){
         Account ac = check(보내는분 ,비밀번호);
         Account ac1 = new Account(받는분);
-        AccountLog aclog1 = new AccountLog(받는분);
         for (int i = 0; i < accounts.length; i++){
-            if (accounts[i].get계좌번호().equals(ac1.get계좌번호())){
+            Account a = accounts[i];
+            if (a.get계좌번호().equals(ac1.get계좌번호())){
                 if (ac.get잔액() >= 이체금액){
-                    for (int a = 0; a < accountLogs.length; a++){
-                        if (accountLogs[a] == null){
-                            ac.set잔액(ac.get잔액() - 이체금액);
-                            accounts[i].set잔액(accounts[i].get잔액()+이체금액);
-                            addLog(보내는분,비밀번호).setLog(nowDate(),"이체","-"+이체금액,accounts[i].get잔액());
-                            aclog1.setLog(nowDate(),"이체","+"+이체금액,accounts[a].get잔액());
-                            accountLogs[a] = aclog1;
-                            return 1;
-                        }// if end
+                    ac.set잔액(ac.get잔액() - 이체금액);
+                    a.set잔액(a.get잔액()+이체금액);
+                    AccountLog accountLog = plusLog(보내는분,비밀번호);
+                    accountLog = new AccountLog(nowDate(),"이체","-"+이체금액,ac.get잔액());
+                    for (int j = 0; j < a.getAccountLogs().length; j++){
+                         if (a.getAccountLogs()[j] == null){
+                             a.getAccountLogs()[j] = new AccountLog(nowDate(),"이체","+"+이체금액,a.get잔액());
+                             return 1;
+                         }// if end
                     }// for end
                 } else if (ac.get잔액() < 이체금액) {
                     return 2;
@@ -110,11 +112,16 @@ public class BankController {// class start
         return null;
     }// 로그조회 메소드 end
 
-    public Account[] logAraay(String 시간 , String 내역 , String 입출금 , int 현재잔액){
-        String s1 = 시간+"\t"+내역+"\t"+입출금+"\t"+현재잔액;
-        Account[] ac1 = new Account();
-        return ac1;
+    public AccountLog plusLog(String 계좌번호 , int 비밀번호){
+        Account result = check(계좌번호,비밀번호);
+        for (int i = 0; i < result.getAccountLogs().length; i++){
+            if (result.getAccountLogs()[i] == null){
+                return result.getAccountLogs()[i];
+            }// if end
+        }// foe end
+        return null;
     }// func end
+
 
 
 }// class end

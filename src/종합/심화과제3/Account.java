@@ -5,9 +5,9 @@ public class Account {// class start
     private String 계좌번호;
     private int 비밀번호;
     private int 잔액;
-    private AccountLog[] accountLogs ;
+    private AccountLog[] accountLogs;
     // 생성자
-
+    public Account(){}// 기본생성자
     public Account(String 계좌번호, int 비밀번호) {
         this.계좌번호 = 계좌번호;
         this.비밀번호 = 비밀번호;
