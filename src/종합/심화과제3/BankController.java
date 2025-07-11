@@ -110,9 +110,14 @@ public class BankController {// class start
 
     // 로그 조회 메소드
     public AccountLog getAccountLogs(String 계좌번호 , int 비밀번호){
-
-        return AccountLog(계좌번호,비밀번호);
-
+        for (int i = 0; i < accountLogs.length; i++){
+            if (accountLogs[i] != null){
+                if (accountLogs[i].get계좌번호().equals(계좌번호) && accountLogs[i].get비밀번호() == 비밀번호){
+                    return accountLogs[i];
+                }// if end
+            }// if end
+        }// for end
+        return null;
     }// 로그조회 메소드 end
 
     public AccountLog addLog(String 계좌번호,int 비밀번호){

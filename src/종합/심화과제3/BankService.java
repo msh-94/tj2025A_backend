@@ -75,7 +75,7 @@ public class BankService { // class start
                 String s4 = scan.next();
                 System.out.print("비밀번호 : ");
                 int pw3 = scan.nextInt();
-                AccountLog[] result = bco.getAccountLogs(s4,pw3);
+                AccountLog result = bco.getAccountLogs(s4,pw3);
                 System.out.println(result);
             }// if end
         }// for end
