@@ -2,8 +2,6 @@ package 종합.심화과제3; // 패키지명
 
 public class AccountLog { // class start
     // 멤버변수
-    private String 계좌번호;
-    private int 비밀번호;
     private String 시간;
     private String 내역;
     private String 입출금;
@@ -11,17 +9,13 @@ public class AccountLog { // class start
     // 생성자
     public AccountLog(){
 
-    }// 기본생성자
-
-    public AccountLog(String 계좌번호) {
-        this.계좌번호 = 계좌번호;
-    }// 계좌번호 생성자
-
-    public AccountLog(String 계좌번호 , int 비밀번호){
-        this.계좌번호 = 계좌번호;
-        this.비밀번호 = 비밀번호;
-    }// 유효성용 생성자
-
+    }
+    public AccountLog(String 시간, String 내역, String 입출금, int 현재잔액) {
+        this.시간 = 시간;
+        this.내역 = 내역;
+        this.입출금 = 입출금;
+        this.현재잔액 = 현재잔액;
+    } // func end
     // getter setter
 
     public String get시간() {
@@ -56,21 +50,12 @@ public class AccountLog { // class start
         this.현재잔액 = 현재잔액;
     } // set 현재잔액 end
 
-    public String get계좌번호() {
-        return 계좌번호;
-    }// get 계좌번호
-
-    public void set계좌번호(String 계좌번호) {
-        this.계좌번호 = 계좌번호;
-    } // set 계좌번호
-
-    public int get비밀번호() {
-        return 비밀번호;
-    } // get 비밀번호
-
-    public void set비밀번호(int 비밀번호) {
-        this.비밀번호 = 비밀번호;
-    }//  set 비밀번호
+    public void setLog(String 시간 , String 내역 , String 입출금 , int 현재잔액){
+        this.시간 = 시간;
+        this.내역 = 내역;
+        this.입출금 = 입출금;
+        this.현재잔액 = 현재잔액;
+    }
     // toString
 
     @Override

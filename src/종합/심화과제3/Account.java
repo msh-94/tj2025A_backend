@@ -5,6 +5,7 @@ public class Account {// class start
     private String 계좌번호;
     private int 비밀번호;
     private int 잔액;
+    private AccountLog[] accountLogs ;
     // 생성자
 
     public Account(String 계좌번호, int 비밀번호) {
@@ -41,14 +42,13 @@ public class Account {// class start
         this.잔액 = 잔액;
     }// set end
 
+    public AccountLog[] getAccountLogs() {
+        return accountLogs;
+    }
+
+    public void setAccountLogs(AccountLog[] accountLogs) {
+        this.accountLogs = accountLogs;
+    }
     // toString
 
-    @Override
-    public String toString() {
-        return "Account{" +
-                "계좌번호='" + 계좌번호 + '\'' +
-                ", 비밀번호=" + 비밀번호 +
-                ", 잔액=" + 잔액 +
-                '}';
-    }// toString end
 }// class end

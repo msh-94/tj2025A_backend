@@ -1,5 +1,6 @@
 package 종합.심화과제3;// 패키지명
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 
@@ -75,8 +76,10 @@ public class BankService { // class start
                 String s4 = scan.next();
                 System.out.print("비밀번호 : ");
                 int pw3 = scan.nextInt();
-                AccountLog result = bco.getAccountLogs(s4,pw3);
-                System.out.println(result.get시간()+"\t"+result.get내역()+" | "+ result.get입출금() +" | 잔액: " +result.get현재잔액()+"원");
+                AccountLog[] result = bco.getAccountLogs(s4,pw3);
+                if (result != null){
+                    System.out.println(Arrays.toString(result));
+                }
             }// if end
         }// for end
 

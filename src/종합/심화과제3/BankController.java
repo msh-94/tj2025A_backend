@@ -2,13 +2,14 @@ package 종합.심화과제3; // 패키지명
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 public class BankController {// class start
     // 현재 날짜 시간 구하기
 
     // 멤버변수
     static Account[] accounts = new Account[100];
-    AccountLog[] accountLogs = new AccountLog[100];
+
     // 메소드
 
     // 등록메소드
@@ -40,10 +41,7 @@ public class BankController {// class start
 
         Account result = check(계좌번호,비밀번호);
         result.set잔액(result.get잔액()+입금액);
-        addLog(계좌번호,비밀번호).set내역("입금");
-        addLog(계좌번호,비밀번호).set입출금("+"+입금액);
-        addLog(계좌번호,비밀번호).set현재잔액(result.get잔액());
-        addLog(계좌번호,비밀번호).set시간(nowDate());
+        result.setAccountLogs();
         return 1;
     }// 입금 메소드 end
 
@@ -51,11 +49,7 @@ public class BankController {// class start
     public int outMoney(String 계좌번호,int 비밀번호,int 출금액){
         if (check(계좌번호,비밀번호).get잔액() >= 출금액){
             check(계좌번호,비밀번호).set잔액(check(계좌번호,비밀번호).get잔액() - 출금액);
-
-            addLog(계좌번호,비밀번호).set내역("출금");
-            addLog(계좌번호,비밀번호).set입출금("-"+출금액);
-            addLog(계좌번호,비밀번호).set시간(nowDate());
-            addLog(계좌번호,비밀번호).set현재잔액(check(계좌번호,비밀번호).get잔액());
+            addLog(계좌번호,비밀번호).setLog(nowDate(),"출금","-"+출금액,check(계좌번호,비밀번호).get잔액());
             return 1;
         } else if (check(계좌번호,비밀번호).get잔액() < 출금액) {
             return 2;
@@ -80,14 +74,8 @@ public class BankController {// class start
                         if (accountLogs[a] == null){
                             ac.set잔액(ac.get잔액() - 이체금액);
                             accounts[i].set잔액(accounts[i].get잔액()+이체금액);
-                            addLog(보내는분,비밀번호).set시간(nowDate());
-                            addLog(보내는분,비밀번호).set내역("이체");
-                            addLog(보내는분,비밀번호).set현재잔액(ac.get잔액());
-                            addLog(보내는분,비밀번호).set입출금("-"+이체금액);
-                            aclog1.set시간(nowDate());
-                            aclog1.set내역("이체");
-                            aclog1.set현재잔액(ac1.get잔액());
-                            aclog1.set입출금("+"+이체금액);
+                            addLog(보내는분,비밀번호).setLog(nowDate(),"이체","-"+이체금액,accounts[i].get잔액());
+                            aclog1.setLog(nowDate(),"이체","+"+이체금액,accounts[a].get잔액());
                             accountLogs[a] = aclog1;
                             return 1;
                         }// if end
@@ -110,27 +98,17 @@ public class BankController {// class start
     }// 날짜등록 메소드 end
 
     // 로그 조회 메소드
-    public AccountLog getAccountLogs(String 계좌번호 , int 비밀번호){
-        for (int i = 0; i < accountLogs.length; i++){
-            if (accountLogs[i] != null){
-                if (accountLogs[i].get계좌번호().equals(계좌번호) && accountLogs[i].get비밀번호() == 비밀번호){
-                    return accountLogs[i];
+    public AccountLog[] getAccountLogs(String 계좌번호 , int 비밀번호){
+        for (int i = 0; i < accounts.length; i++){
+            if (accounts[i] != null){
+                if (accounts[i].get계좌번호().equals(계좌번호) && accounts[i].get비밀번호() == 비밀번호){
+                    return accounts[i].getAccountLogs();
                 }// if end
             }// if end
         }// for end
         return null;
     }// 로그조회 메소드 end
 
-    public AccountLog addLog(String 계좌번호,int 비밀번호){
-        AccountLog aclog = new AccountLog(계좌번호,비밀번호);
-        for (int i = 0 ; i < accountLogs.length; i++){
-            if (accountLogs[i] == null){
-                accountLogs[i] = aclog;
-                return accountLogs[i];
-            }// if end
-        }// for end
-        return null;
-    }// log 메소드 end
 
 
 
