@@ -78,8 +78,13 @@ public class BankService { // class start
                 int pw3 = scan.nextInt();
                 AccountLog[] result = bco.getAccountLogs(s4,pw3);
                 if (result != null){
-                    System.out.println(Arrays.toString(result));
-                }
+                    for (AccountLog a1 : result){
+                        if (a1 != null){
+                            System.out.println(a1);
+                        }//if end
+                    }// for end
+
+                }// if end
             }// if end
         }// for end
 
