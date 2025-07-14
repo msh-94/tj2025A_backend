@@ -18,7 +18,7 @@ public class 실습11 { // class start
         fruits.add("딸기");
         for (int i = 0; i < fruits.size(); i++){
             String str = fruits.get(i);
-            System.out.println("인덱스 "+i+": " +str);
+            System.out.println("인덱스 "+i+" : " +str);
         }// for end
         // [문제3]
         for (String str : fruits){
