@@ -49,8 +49,8 @@ public class 실습11 { // class start
         library.add(b2);
         library.add(b3);
         for (Book b : library){
-            System.out.println("제목 : "+b.title);
-            System.out.println("저자 : "+b.author);
+            System.out.println("제목 : "+b.getTitle());
+            System.out.println("저자 : "+b.getAuthor());
         }// for end
         // [문제7]
         Scanner scan = new Scanner(System.in);
