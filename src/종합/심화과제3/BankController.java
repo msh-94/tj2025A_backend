@@ -2,7 +2,6 @@ package 종합.심화과제3; // 패키지명
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 
 public class BankController {// class start
     // 현재 날짜 시간 구하기
