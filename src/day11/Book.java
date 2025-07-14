@@ -12,6 +12,7 @@ public class Book { // class start
         this.author = author;
     }// 생성자 end
     // 메소드
+    // getter setter toString
 
     public String getTitle() {
         return title;
