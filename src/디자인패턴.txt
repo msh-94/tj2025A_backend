@@ -70,7 +70,7 @@
                     BoardDao
                 -> dto 폴더
                     MemberDto
-                    BoardDao
+                    BoardDto
             - view 폴더 * 추후에 HTML 로 변경된다.
                 Memberview
                 BoardView
