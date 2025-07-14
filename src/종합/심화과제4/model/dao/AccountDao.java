@@ -1,0 +1,66 @@
+package 종합.심화과제4.model.dao; // 패키지명
+
+
+import 종합.심화과제4.model.dto.AccountDto;
+
+public class AccountDao { // class start
+    private AccountDao(){}
+    private static final AccountDao instance = new AccountDao();
+
+    public static AccountDao getInstance() {
+        return instance;
+    }// 싱글톤 end
+
+    // 계좌 등록
+    public boolean addBank(String 계좌번호 , int 비밀번호){
+        boolean result = false;
+        AccountDto accountDao = new AccountDto(계좌번호,비밀번호);
+        result = true;
+        return result;
+    }// func end
+
+    // 입금
+    public boolean inMoney(String 계좌번호, int 비밀번호 , int 입금액){
+        boolean result = false;
+        AccountDto accountDto = new AccountDto(계좌번호,비밀번호);
+        int 합계 =  accountDto.get잔액() + 입금액;
+        accountDto.set잔액(합계);
+        result = true;
+        return result;
+    }// func end
+
+    // 출금
+    public int outMoney(String 계좌번호, int 비밀번호 , int 출금액){
+        AccountDto accountDto = new AccountDto(계좌번호,비밀번호);
+        if (accountDto.get잔액() >= 출금액){
+            int sum = accountDto.get잔액() - 출금액;
+            accountDto.set잔액(sum);
+            return 1;
+        } else if (accountDto.get잔액() < 출금액) {
+            return 2;
+        }// if end
+        return 0;
+    }// func end
+
+    // 잔고조회
+    public int totalMoney(String 계좌번호, int 비밀번호){
+        AccountDto accountDto = new AccountDto(계좌번호,비밀번호);
+        return accountDto.get잔액();
+    }// func end
+
+    // 계좌이체
+    public int transfer(String 보내는분, int 비밀번호 ,String 받는분, int 이체금액){
+        AccountDto accountDto = new AccountDto(보내는분,비밀번호);
+        AccountDto accountDto1 = new AccountDto(받는분);
+        if (accountDto.get잔액() >= 이체금액){
+            int sum = accountDto.get잔액() - 이체금액;
+            accountDto.set잔액(sum);
+            int sum1 = accountDto1.get잔액() + 이체금액;
+            accountDto1.set잔액(sum1);
+            return 1;
+        } else if (accountDto.get잔액() < 이체금액) {
+            return 2;
+        }// if end
+        return 0;
+    }// func end
+}// class end
