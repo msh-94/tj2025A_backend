@@ -25,11 +25,8 @@ public class AccountDao { // class start
 
     // 입금
     public boolean inMoney(String 계좌번호, int 비밀번호 , int 입금액){
-        boolean result = false;
-        AccountDto dto = bankController.Validation(계좌번호,비밀번호);
-        dto.set잔액(dto.get잔액()+입금액);
-        result = true;
-        return result;
+        bankController.Validation(계좌번호,비밀번호).set잔액(bankController.Validation(계좌번호,비밀번호).get잔액()+입금액);
+        return true;
     }// func end
 
     // 출금

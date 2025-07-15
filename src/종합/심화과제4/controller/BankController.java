@@ -1,6 +1,6 @@
 package 종합.심화과제4.controller; // 패키지명
 
-import 종합.심화과제2.Account;
+
 import 종합.심화과제4.model.dao.AccountDao;
 import 종합.심화과제4.model.dao.AccountLogDao;
 import 종합.심화과제4.model.dto.AccountDto;
@@ -20,6 +20,7 @@ public class BankController { // class start
     AccountLogDao accountLogDao = AccountLogDao.getInstance();
     // 리스트 선언
     ArrayList<AccountDto> array1 = new ArrayList<>();
+
     // 계좌등록
     public boolean addBank(String 계좌번호,int 비밀번호){
         boolean result = false;
@@ -40,10 +41,12 @@ public class BankController { // class start
 
     // 계좌번호 유효성 검사
     public AccountDto Validation(String 계좌번호){
+
         for (int i = 0; i < array1.size(); i++){
-            AccountDto ad2 = array1.get(i);
-            if (ad2.get계좌번호().equals(계좌번호)){
-                return ad2;
+            if (array1.get(i) != null){
+                if (array1.get(i).get계좌번호().equals(계좌번호)){
+                    return array1.get(i);
+                }// if end
             }// if end
         }// for end
         return null;
@@ -51,12 +54,8 @@ public class BankController { // class start
 
     // 입금
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
-        boolean result = false;
-        if (Validation(계좌번호,비밀번호) != null){
-            result = accountDao.inMoney(계좌번호,비밀번호,입금액);
-            return result;
-        }// if end
-        return result;
+
+        return accountDao.inMoney(계좌번호,비밀번호,입금액);
     }// func end
 
     // 출금
