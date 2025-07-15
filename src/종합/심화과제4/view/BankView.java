@@ -89,17 +89,17 @@ public class BankView { // class start
 
     // 계좌이체
     public void transfer(){
-        System.out.print("계좌번호 : ");
+        System.out.print("보내는분 : ");
         String 보내는분 = scan.next();
         System.out.print("비밀번호 : ");
         int 비밀번호 = scan.nextInt();
-        System.out.print("계좌번호 : ");
+        System.out.print("받는분 : ");
         String 받는분 = scan.next();
-        System.out.print("비밀번호 : ");
+        System.out.print("이체금액 : ");
         int 이체금액 = scan.nextInt();
         int result = bankController.transfer(보내는분,비밀번호,받는분,이체금액);
         if (result == 1){
-            System.out.println("[안내] 입금이 완료되었습니다.");
+            System.out.println("[안내] 이체가 완료되었습니다.");
         }else if (result == 2){
             System.out.println("[경고] 잔액이 부족합니다");
         } else if (result == 0) {
