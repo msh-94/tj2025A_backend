@@ -32,7 +32,18 @@ public class BankController { // class start
         for (int i = 0; i < array1.size(); i++){
             AccountDto ad1 = array1.get(i);
             if (ad1.get계좌번호().equals(계좌번호) && ad1.get비밀번호() == 비밀번호){
-                return ad1;
+                return array1.get(i);
+            }// if end
+        }// for end
+        return null;
+    }// func end
+
+    // 계좌번호 유효성 검사
+    public AccountDto Validation(String 계좌번호){
+        for (int i = 0; i < array1.size(); i++){
+            AccountDto ad2 = array1.get(i);
+            if (ad2.get계좌번호().equals(계좌번호)){
+                return ad2;
             }// if end
         }// for end
         return null;
@@ -41,40 +52,38 @@ public class BankController { // class start
     // 입금
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         boolean result = false;
-        if (Validation(계좌번호,비밀번호)){
-            result = accountDao.inMoney(계좌번호,비밀번호,입금액);
-        }// if  end
+        if (Validation(계좌번호,비밀번호) != null){
+            if (accountDao.inMoney(계좌번호,비밀번호,입금액)){
+                result = true;
+            }// if end
+        }// if end
         return result;
     }// func end
 
     // 출금
     public int outMoney(String 계좌번호, int 비밀번호 ,int 출금액){
-        if (Validation(계좌번호,비밀번호)){
-           int result = accountDao.outMoney(계좌번호,비밀번호,출금액);
-           return result;
+        if (Validation(계좌번호,비밀번호) != null){
+            int result = accountDao.outMoney(계좌번호,비밀번호,출금액);
+            return result;
         }// if end
-        return 0;
+       return 0;
     }// func end
 
     // 잔고조회
     public int totalMoney(String 계좌번호, int 비밀번호){
-        if (Validation(계좌번호,비밀번호)){
+        if (Validation(계좌번호,비밀번호) != null){
             return accountDao.totalMoney(계좌번호,비밀번호);
         }// if end
-        return 1;
+        return 0;
     }// func end
 
     // 계좌이체
     public int transfer(String 보내는분 , int 비밀번호 , String 받는분 , int 이체금액){
-        for (int i = 0; i < array1.size(); i++){
-            AccountDto ad1 = array1.get(i);
-            if (ad1.get계좌번호().equals(받는분)){
-                if (Validation(보내는분,비밀번호)){
-                    int result = accountDao.transfer(보내는분,비밀번호,받는분,이체금액);
-                    return result;
-                }// if end
+        if (Validation(보내는분,비밀번호) != null){
+            if (Validation(받는분) != null){
+                return accountDao.transfer(보내는분,비밀번호,받는분,이체금액);
             }// if end
-        }// for end
+        }// if end
         return 0;
     }// func end
 } // class end
