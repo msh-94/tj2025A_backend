@@ -81,6 +81,7 @@
         2. drop
             1) drop database 데이터베이스명;           : 지정한 데이터베이스 삭제
             2) drop database if exists 데이터베이스명; : 만약에 지정한 데이터베이스 존재하면 삭제
+
 [ 데이터타입 ]
     1. 정수
         tinyint     1바이트        -128 ~ +127
@@ -88,6 +89,9 @@
         mediumint   3바이트        +-800만정도
         int         4바이트        +-21억정도
         bigint      8바이트        +-21억이상
+            * signed : 부호가 잇다( +양수 -음수 ) 기본값
+            * unsigned : 부호가 없다( 허용범위 x2 )
+            int unsigned : 42억까지( 대신 음수 없다. )
     2. 실수
         float       4바이트        소수점
         double      8바이트        소수점
@@ -103,5 +107,25 @@
         longtext     문자열표현   최대 42억개 글자 , 4GB , 대용량
     5. 논리
         bool        논리표현        true 혹은 false , tinyint 와 같다.
+
+[ 제약조건 ] : 테이블내 속성의 제약/제한된 기능
+    1. not null         : 해당 속성에 null 값을 저장하지 않는다.
+    2. unique           : 해당 속성에 중복값을 허용하지 않는다.(중복방지)
+    3. default 기본값    : 해당 속성에 값 생략시 기본값으로 초기화
+        default 0       : 해당 속성에 값이 생략되면 0 초기화
+        default now()   : 해당 속성에 값이 생략되면 현재 날짜/시간 초기화
+    4. auto_increment   : (MYSQL) 해당 속성에 순서대로 자동번호 초기화  ( primary key )
+    5. primary key      : 기본/식별키(PK) , 식별 가능한 고유 값 필드 키
+        -> 학번,사번,회원번호,주문번호,제품번호,게시물번호,예약번호 등등
+        -> 절대적으로 중복이 없는 고유 값 !!!!!!
+        특징) not null , unique 포함됨
+        선언) constraint primary key( 필드명 ) // 프리머리 키
+    6. foreign key      : 참조/외래키(FK) , 다른 테이블의 기본키(PK)를 참조하는 키
+        -> 수강신청한학번 , 출근한직원사번 , 글작성자회원번호 등등
+        특징) FK필드는 null 과 중복이 가능하다 , PK값 참조한다
+        선언) constraint foreign key( FK필드명 ) references 참조할테이블명( PK필드명 );
+        주의할점)
+            1. FK속성타입 과 PK속성타입 일치 해야한다.
+            2. 관례적으로 PK속성명 과 FK속성명은 동일하게 한다
 
 
