@@ -53,9 +53,8 @@ public class BankController { // class start
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         boolean result = false;
         if (Validation(계좌번호,비밀번호) != null){
-            if (accountDao.inMoney(계좌번호,비밀번호,입금액)){
-                result = true;
-            }// if end
+            result = accountDao.inMoney(계좌번호,비밀번호,입금액);
+            return result;
         }// if end
         return result;
     }// func end
