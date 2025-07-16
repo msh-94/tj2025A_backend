@@ -56,7 +56,9 @@ public class BankController { // class start
     // 입금
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         AccountDto dto = Validation(계좌번호,비밀번호);
-        AccountLogDto logDto = ValidationLog(계좌번호,비밀번호);
+        AccountLogDto accountLogDto = ValidationLog(계좌번호,비밀번호);
+        accountLogDto = accountLogDao.inMoneyLog();
+
 
         return accountDao.inMoney(dto,입금액);
     }// func end
