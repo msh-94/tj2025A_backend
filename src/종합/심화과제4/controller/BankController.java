@@ -23,7 +23,6 @@ public class BankController { // class start
     // 계좌등록
     public boolean addBank(String 계좌번호,int 비밀번호){
         boolean result = false;
-        ArrayList<AccountDto> array1 = accountDao.Arrayreturn();
         result = accountDao.addBank(계좌번호,비밀번호);
         return result;
     }// func end
