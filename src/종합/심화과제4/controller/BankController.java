@@ -4,6 +4,7 @@ package 종합.심화과제4.controller; // 패키지명
 import 종합.심화과제4.model.dao.AccountDao;
 import 종합.심화과제4.model.dao.AccountLogDao;
 import 종합.심화과제4.model.dto.AccountDto;
+import 종합.심화과제4.model.dto.AccountLogDto;
 
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class BankController { // class start
         return result;
     }// func end
 
-    // 유효성 검사
+    // AccountDto 유효성 검사
     public AccountDto Validation(String 계좌번호 , int 비밀번호){
         ArrayList<AccountDto> array1 = accountDao.Arrayreturn();
         for (int i = 0; i < array1.size(); i++){
@@ -55,6 +56,8 @@ public class BankController { // class start
     // 입금
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         AccountDto dto = Validation(계좌번호,비밀번호);
+        AccountLogDto logDto = ValidationLog(계좌번호,비밀번호);
+
         return accountDao.inMoney(dto,입금액);
     }// func end
 
@@ -77,5 +80,14 @@ public class BankController { // class start
         AccountDto dto = Validation(보내는분,비밀번호);
         AccountDto dto1 = Validation(받는분);
         return accountDao.transfer(dto ,dto1 ,이체금액);
+    }// func end
+
+    // Validation 안의 log빼오기
+    public AccountLogDto ValidationLog(String 계좌번호, int 비밀번호){
+        AccountDto dto = Validation(계좌번호,비밀번호);
+        for (int i = 0; i < dto.getArray().size(); i++){
+            return dto.getArray().get(i);
+        }// for end
+        return null;
     }// func end
 } // class end
