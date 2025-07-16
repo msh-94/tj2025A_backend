@@ -73,14 +73,21 @@
         1. show
             1) show databases;                  : DB서버내 전체 데이터베이스 목록조회
             2) show variables like 'datadir'    : DB서버내 LOCAL PATH 조회
+            3) show tables;                     : *활성화*중인 데이터베이스내 모든 테이블 조회
         2. use
             1) use 데이터베이스명;                 : DB서버내 지정한 데이터베이스 활성화(사용)
     [1] 데이터베이스 정의 : DDL
         1. create
             1) create database 데이터베이스명;         : 지정한 데이터베이스 생성
+            2) create table 테이블명(                 : 지정한 테이블 생성
+                    속성명1 타입 제약조건,
+                    속성명2 타입 제약조건
+            );
         2. drop
             1) drop database 데이터베이스명;           : 지정한 데이터베이스 삭제
             2) drop database if exists 데이터베이스명; : 만약에 지정한 데이터베이스 존재하면 삭제
+            3) drop table 테이블명;                   : 지정한 테이블 삭제
+            4) drop table if exists 테이블명;         : 만약에 지정한 테이블 존재하면 삭제
 
 [ 데이터타입 ]
     1. 정수
