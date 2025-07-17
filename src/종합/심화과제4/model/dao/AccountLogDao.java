@@ -2,6 +2,7 @@ package 종합.심화과제4.model.dao; // 패키지명
 
 import 종합.심화과제3.AccountLog;
 import 종합.심화과제4.controller.BankController;
+import 종합.심화과제4.model.dto.AccountDto;
 import 종합.심화과제4.model.dto.AccountLogDto;
 
 import java.time.LocalDateTime;
@@ -41,7 +42,7 @@ public class AccountLogDao { // class start
     }// func end
 
     // 거래내역 목록
-    public boolean transferList(AccountLogDto accountLogDto){
-
-    }
+    public ArrayList<AccountLogDto> transferList(AccountDto accountDto){
+        return accountDto.getArray();
+    }// func end
 }// class end

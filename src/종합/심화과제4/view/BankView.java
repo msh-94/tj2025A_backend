@@ -34,6 +34,7 @@ public class BankView { // class start
             else if (i1 == 3){ outMoney(); }
             else if (i1 == 4){ totalMoney(); }
             else if (i1 == 5){ transfer(); }
+            else if (i1 == 6){ transferList(); }
         }// for end
     }// func end
 
@@ -123,7 +124,6 @@ public class BankView { // class start
                     System.out.println(a1);
                 }//if end
             }// for end
-
         }// if end
     }// func end
 }// class end
