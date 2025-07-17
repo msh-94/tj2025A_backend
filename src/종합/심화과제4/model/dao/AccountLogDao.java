@@ -34,19 +34,14 @@ public class AccountLogDao { // class start
         return aclog.get시간();
     }// func end
 
-    // 입금로그 등록
-    public int inMoneyLog( AccountLogDto accountLogDto,String 사유 , String 입출금, int 현재잔액){
-        if (accountLogDto != null){
-            accountLogDto.set시간(nowDate());
-            accountLogDto.set사유(사유);
-            accountLogDto.set입출금(입출금);
-            accountLogDto.set현재잔액(현재잔액);
-            array2.add(accountLogDto);
+    // 로그 등록
+    public int Logadd( AccountDto accountDto,String 사유 , String 입출금, int 현재잔액){
+        if (accountDto != null){
+            AccountLogDto accountLogDto = new AccountLogDto(nowDate(),사유,입출금,현재잔액);
+            accountDto.getArray().add(accountLogDto);
             return 1;
-        }else {
-            AccountLogDto accountLogDto1 = new AccountLogDto(nowDate(),사유,입출금,현재잔액);
-            return 2;
         }// if end
+        return 2;
     }// func end
 
     // 거래내역 목록

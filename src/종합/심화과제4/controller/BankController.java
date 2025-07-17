@@ -57,9 +57,7 @@ public class BankController { // class start
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         AccountDto dto = Validation(계좌번호,비밀번호);
         if (accountDao.inMoney(dto ,입금액)){
-            if (accountLogDao.inMoneyLog(ValidationLog(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액()) == 1){
-                return true;
-            } else if (accountLogDao.inMoneyLog(ValidationLog(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액()) == 2) {
+            if (accountLogDao.Logadd(Validation(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액()) == 1){
                 return true;
             } // if end
         }// if end
@@ -70,6 +68,11 @@ public class BankController { // class start
     public int outMoney(String 계좌번호, int 비밀번호 ,int 출금액){
         AccountDto dto = Validation(계좌번호,비밀번호);
         int result = accountDao.outMoney(dto,출금액);
+        if (result == 1){
+            if (accountLogDao.Logadd(Validation(계좌번호,비밀번호),"출금","-"+출금액,dto.get잔액()) == 1){
+                return result;
+            }// if end
+        }// if end
         return result;
 
     }// func end
@@ -84,21 +87,40 @@ public class BankController { // class start
     public int transfer(String 보내는분 , int 비밀번호 , String 받는분 , int 이체금액){
         AccountDto dto = Validation(보내는분,비밀번호);
         AccountDto dto1 = Validation(받는분);
+        if (accountLogDao.Logadd(Validation(보내는분,비밀번호),"이체","-"+이체금액,dto.get잔액()) == 1){
+            if (accountLogDao.Logadd(Validation(받는분),"이체","+"+이체금액,dto1.get잔액()) == 1){
+                return accountDao.transfer(dto ,dto1 ,이체금액);
+            }// if end
+        }// if end
         return accountDao.transfer(dto ,dto1 ,이체금액);
     }// func end
 
     // 거래내역
     public ArrayList<AccountLogDto> transferList(String 계좌번호, int 비밀번호){
         AccountDto accountDto = Validation(계좌번호,비밀번호);
-        if (accountLogDao.transferList(accountDto) != null){
-            return accountLogDao.transferList(accountDto);
-        }// if end
+        for (int i = 0; i < accountDto.getArray().size(); i++){
+            AccountLogDto accountLogDto = accountDto.getArray().get(i);
+            if (accountLogDto != null){
+                return accountLogDao.transferList(accountDto);
+            }// if end
+        }// for end
         return null;
     }// func end
 
     // Validation 안의 log빼오기
     public AccountLogDto ValidationLog(String 계좌번호, int 비밀번호){
         AccountDto dto = Validation(계좌번호,비밀번호);
+        for (int i = 0; i < dto.getArray().size(); i++){
+            if (dto.getArray() != null){
+                return dto.getArray().get(i);
+            }// if end
+        }// for end
+        return null;
+    }// func end
+
+    // 매개변수 계좌번호로 log빼오기
+    public AccountLogDto ValidationLog(String 계좌번호){
+        AccountDto dto = Validation(계좌번호);
         for (int i = 0; i < dto.getArray().size(); i++){
             if (dto.getArray() != null){
                 return dto.getArray().get(i);

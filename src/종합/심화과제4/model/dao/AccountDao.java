@@ -58,10 +58,8 @@ public class AccountDao { // class start
     // 계좌이체
     public int transfer(AccountDto dto , AccountDto dto1 ,int 이체금액){
         if (dto.get잔액() >= 이체금액){
-            int sum = dto.get잔액() - 이체금액;
-            dto.set잔액(sum);
-            int sum1 = dto1.get잔액() + 이체금액;
-            dto1.set잔액(sum1);
+            dto.set잔액(dto.get잔액()-이체금액);
+            dto1.set잔액(dto1.get잔액()+이체금액);
             return 1;
         } else if (dto.get잔액() < 이체금액) {
             return 2;

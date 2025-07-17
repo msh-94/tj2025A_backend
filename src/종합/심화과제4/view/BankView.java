@@ -118,12 +118,6 @@ public class BankView { // class start
         System.out.print("비밀번호 : ");
         int 비밀번호 = scan.nextInt();
         ArrayList<AccountLogDto> result = bankController.transferList(계좌번호,비밀번호);
-        if (result != null){
-            for (AccountLogDto a1 : result){
-                if (a1 != null){
-                    System.out.println(a1);
-                }//if end
-            }// for end
-        }// if end
+        System.out.println(result);
     }// func end
 }// class end
