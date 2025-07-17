@@ -1,10 +1,10 @@
-drop database if exists 실습2;
-create database 실습2;
-use 실습2;
+drop database if exists 실습2;	
+create database 실습2;			
+use 실습2;						
 set sql_safe_updates = 0;
 # [문제1]
-create table members(
-	member_id varchar(20) ,
+create table members( 
+	member_id varchar(20) not null,			
     member_name varchar(50) not null ,
     email varchar(100) not null unique , 
     join_date datetime default now() , 
