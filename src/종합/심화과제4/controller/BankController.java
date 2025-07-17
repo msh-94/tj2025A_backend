@@ -106,28 +106,4 @@ public class BankController { // class start
         }// for end
         return null;
     }// func end
-
-    // Validation 안의 log빼오기
-    public AccountLogDto ValidationLog(String 계좌번호, int 비밀번호){
-        AccountDto dto = Validation(계좌번호,비밀번호);
-        for (int i = 0; i < dto.getArray().size(); i++){
-            if (dto.getArray() != null){
-                return dto.getArray().get(i);
-            }// if end
-        }// for end
-        return null;
-    }// func end
-
-    // 매개변수 계좌번호로 log빼오기
-    public AccountLogDto ValidationLog(String 계좌번호){
-        AccountDto dto = Validation(계좌번호);
-        for (int i = 0; i < dto.getArray().size(); i++){
-            if (dto.getArray() != null){
-                return dto.getArray().get(i);
-            }// if end
-        }// for end
-        return null;
-    }// func end
-
-
 } // class end
