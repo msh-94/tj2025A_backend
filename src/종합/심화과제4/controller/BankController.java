@@ -57,9 +57,11 @@ public class BankController { // class start
     public boolean inMoney(String 계좌번호,int 비밀번호,int 입금액){
         AccountDto dto = Validation(계좌번호,비밀번호);
         if (accountDao.inMoney(dto ,입금액)){
-            if (accountLogDao.inMoneyLog(ValidationLog(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액())){
+            if (accountLogDao.inMoneyLog(ValidationLog(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액()) == 1){
                 return true;
-            }// if end
+            } else if (accountLogDao.inMoneyLog(ValidationLog(계좌번호,비밀번호),"입금","+"+입금액,dto.get잔액()) == 2) {
+                return true;
+            } // if end
         }// if end
         return false;
     }// func end
@@ -98,7 +100,9 @@ public class BankController { // class start
     public AccountLogDto ValidationLog(String 계좌번호, int 비밀번호){
         AccountDto dto = Validation(계좌번호,비밀번호);
         for (int i = 0; i < dto.getArray().size(); i++){
-            return dto.getArray().get(i);
+            if (dto.getArray() != null){
+                return dto.getArray().get(i);
+            }// if end
         }// for end
         return null;
     }// func end
