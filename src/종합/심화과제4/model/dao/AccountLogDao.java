@@ -34,9 +34,14 @@ public class AccountLogDao { // class start
     }// func end
 
     // 입금로그 등록
-    public boolean inMoneyLog(String 시간 , String 사유 , String 입출금, int 현재잔액){
-    AccountLogDto accountLogDto = new AccountLogDto(시간,사유,입출금,현재잔액);
-    array2.add(accountLogDto);
+    public boolean inMoneyLog( AccountLogDto accountLogDto,String 사유 , String 입출금, int 현재잔액){
+    AccountLogDto accountLogDto1 = new AccountLogDto(nowDate(),사유,입출금,현재잔액);
+    array2.add(accountLogDto1);
     return true;
     }// func end
+
+    // 거래내역 목록
+    public boolean transferList(AccountLogDto accountLogDto){
+
+    }
 }// class end

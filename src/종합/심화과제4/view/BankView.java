@@ -1,7 +1,10 @@
 package 종합.심화과제4.view; // 패키지명
 
+import 종합.심화과제3.AccountLog;
 import 종합.심화과제4.controller.BankController;
+import 종합.심화과제4.model.dto.AccountLogDto;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class BankView { // class start
@@ -104,6 +107,23 @@ public class BankView { // class start
             System.out.println("[경고] 잔액이 부족합니다");
         } else if (result == 0) {
             System.out.println("[경고] 계좌가 일치하지 않습니다.");
+        }// if end
+    }// func end
+
+    // 거래내역
+    public void transferList(){
+        System.out.print("계좌번호 : ");
+        String 계좌번호 = scan.next();
+        System.out.print("비밀번호 : ");
+        int 비밀번호 = scan.nextInt();
+        ArrayList<AccountLogDto> result = bankController.transferList(계좌번호,비밀번호);
+        if (result != null){
+            for (AccountLogDto a1 : result){
+                if (a1 != null){
+                    System.out.println(a1);
+                }//if end
+            }// for end
+
         }// if end
     }// func end
 }// class end
