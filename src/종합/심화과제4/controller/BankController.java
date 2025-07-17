@@ -87,8 +87,8 @@ public class BankController { // class start
     public int transfer(String 보내는분 , int 비밀번호 , String 받는분 , int 이체금액){
         AccountDto dto = Validation(보내는분,비밀번호);
         AccountDto dto1 = Validation(받는분);
-        if (accountLogDao.Logadd(Validation(보내는분,비밀번호),"이체","-"+이체금액,dto.get잔액()) == 1){
-            if (accountLogDao.Logadd(Validation(받는분),"이체","+"+이체금액,dto1.get잔액()) == 1){
+        if (accountLogDao.Logadd(Validation(보내는분,비밀번호),"이체","-"+이체금액,dto.get잔액()-이체금액) == 1){
+            if (accountLogDao.Logadd(Validation(받는분),"이체","+"+이체금액,dto1.get잔액()+이체금액) == 1){
                 return accountDao.transfer(dto ,dto1 ,이체금액);
             }// if end
         }// if end
