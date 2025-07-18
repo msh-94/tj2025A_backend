@@ -69,7 +69,7 @@ select avg(price) as 평균단가 from books;
 -- [문제 3] orders 테이블에서 '김민준' 고객이 주문한 총 주문 수량(order_qty의 합계)을 조회하세요.
 select sum(order_qty) from orders where customer = "김민준"; 
 -- [문제 4] books 테이블에서 각 장르(genre)별로 도서가 총 몇 권씩 있는지 조회하세요.
-select genre , sum(stock) from books group by genre;
+select genre , count(*) from books group by genre;
 -- [문제 5] orders 테이블에서 각 도서번호(book_id)별로 총 몇 권이 주문되었는지 조회하세요.
 select book_id , sum(order_qty) from orders group by book_id;
 -- [문제 6] '김민준'과 '이서연' 고객에 대해, 각 고객별 총 주문 수량(order_qty의 합계)을 조회하세요. 단, 총 주문 수량이 4권 이상인 고객만 조회하세요.
@@ -79,7 +79,7 @@ select avg(price) from books where stock < 5;
 -- [문제 8] orders 테이블에서 3번 이상 주문된 도서의 book_id와 주문 횟수를 조회하세요.
 select book_id , count(*) from orders group by book_id having count(*) >= 3;
 -- [문제 9] orders 테이블에서 총 주문 수량이 5권을 초과하는 고객의 customer와 총 주문 수량을 조회하세요.
-select customer , count(*) from orders group by customer having count(*) > 5;
+select customer , sum(order_qty) from orders group by customer having sum(order_qty) > 5;
 -- [문제 10] books 테이블에서 각 저자(author)별로 출판한 도서가 2권 이상인 저자의 이름과 출판 도서 수를 조회하세요.
 select author , count(*) from books group by author having count(*) >= 2;
 -- [문제 11] books 테이블의 '컴퓨터' 장르 도서 중 가장 비싼 도서의 가격을 조회하세요.
