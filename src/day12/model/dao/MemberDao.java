@@ -38,16 +38,6 @@ public class MemberDao {
         return 1;
     }// func end
 
-    // 회원번호 체크
-    public int check(String mid , String mpw){
-        for (int i = 0; i < memberDtos.size(); i++){
-            MemberDto m1 = memberDtos.get(i);
-            if (m1.getMid().equals(mid) && m1.getMpw().equals(mpw)){
-                return memberDtos.get(i).getMno();
-            }// if end
-        }// for end
-        return 0;
-    }// func end
 
     //  memberList 조회 메소드
     public ArrayList<MemberDto> getMemberList(){
