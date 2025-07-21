@@ -44,7 +44,7 @@ public class 실습15 {// class start
             }else {
                 fout1 = new FileOutputStream(path1);
                 fout1.write(out);
-            }// if end
+            }// if end  or test.java
 
             // [문제5]
             System.out.print("이름 : ");
