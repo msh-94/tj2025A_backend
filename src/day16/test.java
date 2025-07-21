@@ -16,7 +16,7 @@ public class test {
             File file = new File(path1);
             if (file.exists()) { // 파일이 존재하면
                 FileInputStream fin = new FileInputStream(path1); // 읽을 경로 가져오고
-                byte[] inByte = new byte[(int)file.length()]; // 파일용량만큼 배열길이 늘리고
+                byte[] inByte = new byte[(int)file.length()]; // 파일용량만큼 배열길이 늘리기
                 fin.read(inByte); // 읽고 나서 추가해야됨 안그러면 이전값을 날려버림
                 String str = new String(inByte); // 문자열로 변환
                 str += outname; // 기존에 있던것에 새로입력값 추가
