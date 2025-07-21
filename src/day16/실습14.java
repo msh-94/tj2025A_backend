@@ -43,7 +43,7 @@ public class 실습14 {// class start
 
         // [문제7]
         try {
-            new pause().pauseOneSecond();
+            new 실습14().pauseOneSecond();
         } catch (InterruptedException e) {
             System.out.println(e);
         }// try end
@@ -57,11 +57,9 @@ public class 실습14 {// class start
         }// try end
 
     } // main end
-
-}// class end
-// [문제7]
-class pause{
+    // [문제7]
     public void pauseOneSecond() throws InterruptedException{
         Thread.sleep(1000);
     } // func end
 }// class end
+
