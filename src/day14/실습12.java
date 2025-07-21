@@ -1,8 +1,6 @@
 package day14; // 패키지명
 
-import day09.package2.C;
 
-import javax.crypto.Mac;
 
 public class 실습12 {
     public static void main(String[] args) {
