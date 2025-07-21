@@ -21,15 +21,21 @@ public class Example1 { // class start
                     - 예외/오류 발생시 예외를 고치는게 아니라 흐름을 제어 vs if 비슷
                     - 프로그램을 24시간 중단 없이 실행하기 위한 안전한 로직 구현 < 100%없다. --> 유지보수 >
                 5. 예외클래스
-                    ClassNotFoundException  : 클래스를 못찾았을때 발생되는 정보를 저장하는 클래스
-                    InterruptedException    : 흐름이 중단 되었을때 발생되는 정보를 저장하는 클래스
-                    NullPointerException    : 객체가 없는데 객체에 접근연산자 사용 하면 발생 클래스
-                    NumberFormatException   : 정수로 타입 불가능한 예외
-                    ArrayIndexOutOfBoundsException : 존재하지 않는 인덱스 호출 예외
-                    InputMismatchException  : 입력 데이터 타입이 일치 하지 않을때 예외
-                6. 사용법
+                    Exception : 모든 예외들의 상위 클래스
+                        - ClassNotFoundException  : 클래스를 못찾았을때 발생되는 정보를 저장하는 클래스
+                        - InterruptedException    : 흐름이 중단 되었을때 발생되는 정보를 저장하는 클래스
+                        - NullPointerException    : 객체가 없는데 객체에 접근연산자 사용 하면 발생 클래스
+                        - NumberFormatException   : 정수로 타입 불가능한 예외
+                        - ArrayIndexOutOfBoundsException : 존재하지 않는 인덱스 호출 예외
+                        - InputMismatchException  : 입력 데이터 타입이 일치 하지 않을때 예외
+                        등등
+                6. 사용법 : catch 여러번 사용가능(다중catch)
                     try{ 예외가 발생할 것 같은 코드 또는 일반예외 }
                     catch( 예외클래스명 매개변수명 ){ 지정한예외발생시 처리할 코드 }
+                    catch( 예외클래스명 매개변수명 ){ 지정한예외발생시 처리할 코드 }
+                    catch( 예외클래스명 매개변수명 ){ 지정한예외발생시 처리할 코드 }
+                    finally{ 예외 여부 상관없이 무조건 실행되는 코드 }
+                    * 주의할점 : 다중 catch 시 먼저 발생한 예외 부터 하나의 예외 발생 하고 하나의 catch만 실행된다.
         */
         // --------------------------------- 예제 에서는 강제로 예외 발생하는 상황 ---------------------------------
         // [1] 일반 예외 : 예외가 있던/없던 무조건 예외처리 해야한다
@@ -92,5 +98,24 @@ public class Example1 { // class start
         }catch ( InputMismatchException e){
             System.out.println("[예외발생7] 입력한 타입이 불일치한다." + e); // [예외발생7] 입력한 타입이 불일치한다.java.util.InputMismatchException
         }// try end
+
+        // [8] 다중 catch 와 finally , 상위클래스 : Exception
+        try {
+            Integer.parseInt("1AA"); // 예외발생시 아래코드는 실행되지 않고 catch 이동
+
+            int[] intArray = {1, 2, 3};
+            System.out.println(intArray[5]);
+
+            String str = null;
+            System.out.println(str.length());
+        }
+        catch ( NumberFormatException e1){ System.out.println(e1); }
+        catch ( ArrayIndexOutOfBoundsException e2){ System.out.println(e2); }
+        catch ( NullPointerException e3){ System.out.println(e3); }
+        catch ( Exception e4){ System.out.println(e4); }
+        // - 주의할점1 : 다중 catch 시 먼저 발생한 예외 부터 하나의 예외 발생 하고 하나의 catch만 실행된다.
+        // - 주의할점2 : Exception클래스는 모든 예외를 처리 하므로 다중 catch 시 얘는 맨 아래에서 정의한다
+        finally { System.out.println("예외가 있던 없던 무조건 실행코드"); }
+
     }// main end
 }// class end
