@@ -2,6 +2,7 @@ package day16; // 패키지명
 
 public class 실습14 {// class start
 
+
     public static void main(String[] args) { // main start
         // [문제1]
         try{  int result = 10 / 0; }
@@ -56,6 +57,7 @@ public class 실습14 {// class start
         }// try end
 
     } // main end
+
 }// class end
 // [문제7]
 class pause{
