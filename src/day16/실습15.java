@@ -3,6 +3,8 @@ package day16;// 패키지명
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.nio.charset.StandardCharsets;
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class 실습15 {// class start
@@ -30,12 +32,19 @@ public class 실습15 {// class start
 
             // [문제4]
             String path1 = "./src/visit_log.txt";
-            FileOutputStream fout1 = new FileOutputStream(path1);
             Scanner scan = new Scanner(System.in);
             System.out.print("이름 : ");  String name = scan.next();
             String outname = name+"님이 방문했습니다.\n";
-            byte[] outByte1 = outname.getBytes();
-            fout1.write(outByte1); // 누적안됨
+            byte[] out = outname.getBytes();
+            File file3 = new File(path1);
+            FileOutputStream fout1;
+            if (file3.exists()){
+                fout1 = new FileOutputStream(path1,true);
+                fout1.write(out);
+            }else {
+                fout1 = new FileOutputStream(path1);
+                fout1.write(out);
+            }// if end
 
             // [문제5]
             System.out.print("이름 : ");
@@ -79,14 +88,9 @@ public class 실습15 {// class start
                 String[] cols = irow.split(",");
                 System.out.printf("동별 : %s , 총 인구 : %s\n", cols[0], cols[1]);
             }// for end
+        }catch (Exception e){ System.out.println(e); } // try end
 
 
-
-
-
-        }catch (Exception e){ System.out.println(e); }
-
-        // [문제2]
 
 
 
