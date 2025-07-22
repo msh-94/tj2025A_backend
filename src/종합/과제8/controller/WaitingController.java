@@ -16,7 +16,6 @@ public class WaitingController { // class start
 
     // 등록함수
     public boolean waitAdd(String phone,int count){
-
         return  waitingDao.waitAdd(phone, count);
     }// func end
 
