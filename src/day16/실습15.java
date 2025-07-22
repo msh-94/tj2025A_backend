@@ -3,8 +3,6 @@ package day16;// 패키지명
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.nio.charset.StandardCharsets;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class 실습15 {// class start
