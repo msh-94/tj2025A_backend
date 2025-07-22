@@ -7,26 +7,26 @@ import java.util.Scanner;
 
 public class 실습15 {// class start
     public static void main(String[] args) { // main start
-        // [문제1]
-        try {
-            String path = "./src/diary.txt";
-            FileOutputStream fout = new FileOutputStream( path );
-            String str = "오늘 날씨는 맑았다. 자바 공부는 재미있다.";
-            byte[] outByte = str.getBytes();
-            fout.write(outByte);
+        // [문제1] : ( 출력 : 자바 --> 파일 )
+        try { // try { 예외가 발생할것 같은 또는 일반예외 }
+            String path = "./src/diary.txt"; // (1) 파일의 경로 지정
+            FileOutputStream fout = new FileOutputStream( path ); // (2) 출력 객체 생성 , 일반예외 발생 , try ~ catch
+            String str = "오늘 날씨는 맑았다. 자바 공부는 재미있다."; // (3) 출력할 내용
+            byte[] outByte = str.getBytes(); // (4) 출력할 내용 -> 바이트 배열로 변환
+            fout.write(outByte); // (5) 바이트 내보내기 , 일반예외 발생 , try ~ catch
 
-            // [문제2]
-            FileInputStream fin = new FileInputStream( path );
-            byte[] bytes = new byte[58];
-            fin.read(bytes);
-            System.out.println(new String(bytes));
+            // [문제2] : ( 입력 : 파일 --> 자바 ) (1) 파일경로는 문제1번 path
+            FileInputStream fin = new FileInputStream( path ); // (2) 입력 객체 생성
+            byte[] bytes = new byte[58]; // 가져올 바이트를 저장할 바이트 배열 선언
+            fin.read(bytes); // 읽어온 바이트를 배열에 저장 , 일반예외 발생 , try ~ catch
+            System.out.println(new String(bytes)); // 읽어온 바이트를 문자열로 반환하여 출력
 
             // [문제3]
             File file = new File(path);
-            System.out.println(file.exists());
-            System.out.println(file.getPath());
-            System.out.println(file.getName());
-            System.out.println(file.length());
+            System.out.println(file.exists()); // 파일 존재여부
+            System.out.println(file.getPath()); // 파일 경로
+            System.out.println(file.getName()); // 파일 이름
+            System.out.println(file.length()); // 파일 용량
 
             // [문제4]
             String path1 = "./src/visit_log.txt";
@@ -86,8 +86,12 @@ public class 실습15 {// class start
                 String[] cols = irow.split(",");
                 System.out.printf("동별 : %s , 총 인구 : %s\n", cols[0], cols[1]);
             }// for end
-        }catch (Exception e){ System.out.println(e); } // try end
+        }catch (Exception e){ System.out.println(e); } // try end  // catch( 예외클래스명 매개변수명 ){ 예외일때코드 }
 
+        // * 파일처리 목적 : (저장) 자바 외 저장소로 영구저장 가능하다.
+        // 문제1 : ( 출력 : 자바 --> 파일 )
+
+        // 문제2 : ( 입력 : 파일 --> 자바 )
 
 
 
