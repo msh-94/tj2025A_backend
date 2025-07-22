@@ -3,7 +3,7 @@ package 종합.심화과제4.model.dto;// 패키지명
 import java.util.ArrayList;
 
 public class AccountDto { // class start
-    // 매개변수
+    // 멤버변수
     private String 계좌번호;
     private int 비밀번호;
     private int 잔액;

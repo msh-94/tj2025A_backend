@@ -1,7 +1,7 @@
 package 종합.과제7.model.dto; // 패키지명
 
 public class WaitingDto {// class start
-    // 매개변수
+    // 멤버변수
     private String Phone;
     private int count;
 
