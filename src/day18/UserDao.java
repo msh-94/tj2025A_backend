@@ -1,9 +1,7 @@
 package day18;// 패키지명
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
 
 public class UserDao {// class start
     // (*) 싱글톤 : 주로 프로그램내 하나(싱글)의 객체(톤) 표현
@@ -69,6 +67,33 @@ public class UserDao {// class start
             // 4. SQL 결과에 따른 확인/로직/리턴
         }catch (Exception e){ System.out.println(e); } // try end
         return false; // 예외(catch) 발생하면 실패
+    }// func end
+
+    // 3) USER 테이블에 SELECT 해보기
+    public void userSelect(){
+        try {
+            // 1. SQL 작성하기
+            String sql = "select * from user";
+            // 2. SQL 기재하기
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // 3. SQL 매개변수 대입 <없으면 생략>
+            // 4. SQL 실행하기 ,
+            // insert/update/delete -> 레코드 처리 개수(int) -> executeUpdate()
+            // select -> 레코드 조회 (결과)테이블 -> executeQuery()
+            ResultSet rs = ps.executeQuery(); // ResultSet 조회결과 조작 인터페이스 , import 주의 , java.sql
+            // rs.next() : 조회결과 에서 레코드 하나씩 조회/이동 함수
+            // rs.getXXX( 가져올속성명 또는 순서번호 ); : 현재 레코드의 속성/열/컬럼 의 값 반환
+            // 5. SQL 결과에 따른 로직/리턴/확인
+            ArrayList<UserDao> daos = new ArrayList<>();
+            while (rs.next()){  // -- 다음 레코드가 존재하지 않을때 까지 반복
+                UserDao dao = new UserDao();
+                // (1) 현재 순회/반복 중인 레코드의 열/속성/컬럼 값 반환
+                System.out.printf("번호 : %d , 이름 : %s , 나이 : %d \n",rs.getInt(1),rs.getString(2),rs.getInt(3));
+                // (2) 현재 순회/반복 중인 레코드의 열/속성/컬럼 값을 DTO로 구성
+                // csv/데이터베이스 : 테이블 처럼 행과 열로 구성
+                // 자바 : 객체지향 구성 , 즉] 레코드1개 == 객체1개 , 여러개 행 == 리스트/배열
+            }
+        } catch (Exception e) { System.out.println(e); }
     }// func end
 
 }// class end

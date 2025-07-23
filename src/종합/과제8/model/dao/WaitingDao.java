@@ -65,8 +65,12 @@ public class WaitingDao {// class start
         try {
             String sql = "select * from waiting where phone ='" + phone + "'";
             PreparedStatement ps = conn.prepareStatement(sql);
-            boolean result = ps.execute();
-            return result;
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                if (phone.equals(rs.getString(phone))){
+                    return true;
+                }// if end
+            }// while end
         } catch (SQLException e) { System.out.println("[경고] 조회 실패"); }
         return false;
     }// func end
