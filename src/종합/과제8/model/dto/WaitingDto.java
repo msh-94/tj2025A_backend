@@ -2,6 +2,7 @@ package 종합.과제8.model.dto;
 
 public class WaitingDto {
     // 멤버변수
+    private int wno;
     private String phone;
     private int count;
 
@@ -12,6 +13,14 @@ public class WaitingDto {
         this.phone = phone;
         this.count = count;
     }
+    public WaitingDto(int wno, String phone, int count) {
+        this.wno = wno;
+        this.phone = phone;
+        this.count = count;
+    }
+
+    public int getWno() { return wno; }
+    public void setWno(int wno) { this.wno = wno; }
 
     public String getPhone() {
         return phone;
@@ -19,6 +28,7 @@ public class WaitingDto {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
     public int getCount() {
         return count;
     }
@@ -29,7 +39,8 @@ public class WaitingDto {
     @Override
     public String toString() {
         return "WaitingDto{" +
-                "phone='" + phone + '\'' +
+                "wno=" + wno +
+                ", phone='" + phone + '\'' +
                 ", count=" + count +
                 '}';
     }

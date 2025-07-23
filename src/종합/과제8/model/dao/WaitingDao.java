@@ -51,8 +51,9 @@ public class WaitingDao {// class start
             ArrayList<WaitingDto> dtos = new ArrayList<>();
             while (rs.next()){
                 WaitingDto dto = new WaitingDto();
-                dto.setPhone(rs.getString(1));
-                dto.setCount(rs.getInt(2));
+                dto.setWno(rs.getInt("wno"));
+                dto.setPhone(rs.getString("phone"));
+                dto.setCount(rs.getInt("count"));
                 dtos.add(dto);
             } // while end
             return dtos;
@@ -73,6 +74,33 @@ public class WaitingDao {// class start
                 break;
             }// while end
         } catch (SQLException e) { System.out.println("[경고] 조회 실패"); }
+        return false;
+    }// func end
+
+    // 대기취소 기능 구현
+    public boolean waitDelete(int wno){
+        try {
+            String sql = "delete from waiting where wno = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,wno);
+            int count = ps.executeUpdate();
+            if (count == 1)return true;
+            return false;
+        }catch (Exception e){ System.out.println(e); }// catch end
+        return false;
+    }// func end
+
+    // 대기인원 수정 기능
+    public boolean waitUpdate(WaitingDto dto){
+        try{
+            String sql = "update waiting set count = ? where wno = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,dto.getCount());
+            ps.setInt(2,dto.getWno());
+            int counts = ps.executeUpdate();
+            if (counts == 1)return true;
+            return false;
+        } catch (Exception e) { System.out.println(e); }// try end
         return false;
     }// func end
 }// class end

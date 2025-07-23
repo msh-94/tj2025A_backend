@@ -1,6 +1,7 @@
 drop database if exists exam10;
 create database exam10;
 use exam10;
+set SQL_SAFE_UPDATES = 0;
 
 create table board(
 	bno int auto_increment ,

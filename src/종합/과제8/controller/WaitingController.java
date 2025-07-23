@@ -23,4 +23,17 @@ public class WaitingController { // class start
     public ArrayList<WaitingDto> waitPrint(){
         return waitingDao.waitPrint();
     }// func end
+
+    // 대기삭제 기능 구현
+    public boolean waitDelete(int wno){
+        boolean result = waitingDao.waitDelete(wno);
+        return result;
+    }// func end
+
+    // 대기인원 수정
+    public boolean waitUpdate(int wno , int count){
+        WaitingDto dto = new WaitingDto(wno,null,count);
+        boolean result = waitingDao.waitUpdate(dto);
+        return result;
+    }// func end
 }// class end
