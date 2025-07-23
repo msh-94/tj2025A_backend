@@ -40,7 +40,8 @@ public class BoardController {// class start
 
     // (4) 수정 구현
     public boolean boardUpdate(int bno , String bcontent){
-        boolean result = boardDao.boardUpdate(bno,bcontent);
+        BoardDto dto = new BoardDto(bno,bcontent,null);
+        boolean result = boardDao.boardUpdate(dto);
         return result;
     }// func end
 }// class end

@@ -93,12 +93,12 @@ public class BoardDao { // class start
     }// func end
 
     // (4) 게시물 수정 구현
-    public boolean boardUpdate(int bno , String bcontent){
+    public boolean boardUpdate(BoardDto dto){
         try{
             String sql = "update board set bcontent = ? where bno = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(2,bno);
-            ps.setString(1,bcontent);
+            ps.setInt(2,dto.getBno());
+            ps.setString(1,dto.getBcontent());
             int count = ps.executeUpdate();
             if (count >= 1) return true;
             return false;
