@@ -100,7 +100,7 @@ public class BoardDao { // class start
             ps.setInt(2,dto.getBno());
             ps.setString(1,dto.getBcontent());
             int count = ps.executeUpdate();
-            if (count >= 1) return true;
+            if (count == 1) return true;
             return false;
         } catch (Exception e) { System.out.println(e); } // try end
         return false;
