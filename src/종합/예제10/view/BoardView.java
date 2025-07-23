@@ -66,7 +66,7 @@ public class BoardView {// class start
 
     // 삭제 뷰
     public void boardDelete(){
-        System.out.print("게시물 번호 : ");      int bno = scan.nextInt();
+        System.out.print("삭제할 게시물 번호 : ");      int bno = scan.nextInt();
         boolean result = boardController.boardDelete(bno);
         if (result){ System.out.println("[안내] 게시물 삭제 성공"); } // if end
         else { System.out.println("[경고] 게시물 삭제 실패"); } // else end
@@ -74,7 +74,7 @@ public class BoardView {// class start
 
     // 수정 뷰
     public void boardUpdate(){
-        System.out.print("게시물 번호 : ");      int bno = scan.nextInt();   scan.nextLine();
+        System.out.print("수정할 게시물 번호 : ");      int bno = scan.nextInt();   scan.nextLine();
         System.out.print("수정할 내용 : ");      String bcontent = scan.nextLine();
         boolean result = boardController.boardUpdate(bno,bcontent);
         if (result){ System.out.println("[안내] 게시물 수정 성공"); } // if end
