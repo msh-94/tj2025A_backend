@@ -67,9 +67,10 @@ public class WaitingDao {// class start
             PreparedStatement ps = conn.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
-                if (phone.equals(rs.getString(phone))){
+                if (phone.equals(rs.getString("phone"))){
                     return true;
                 }// if end
+                break;
             }// while end
         } catch (SQLException e) { System.out.println("[경고] 조회 실패"); }
         return false;
