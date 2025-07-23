@@ -36,9 +36,10 @@ public class WaitingDao {// class start
                 String sql = "insert into waiting (phone , count) values('" + phone + "',"+ count +" )";
                 PreparedStatement ps = conn.prepareStatement(sql);
                 ps.execute();
+                return true;
             }// if end
         } catch (SQLException e) { System.out.println("[경고] 등록 실패"); }// try end
-        return true;
+        return false;
     }// func end
 
     // 전체조회 함수
