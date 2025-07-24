@@ -1,6 +1,7 @@
 drop database if exists 과제5;
 create database 과제5;
 use 과제5;
+set SQL_SAFE_UPDATES = 0;
 
 create table product(
 	물품번호_pk int auto_increment primary key,
@@ -10,7 +11,7 @@ create table product(
     가격 int not null,
     설명 longtext ,
     판매여부 varchar(4) default '판매중',
-    등록날짜 date default now()
+    등록날짜 datetime default now()
 );
 
 create table inquiry(
@@ -19,7 +20,7 @@ create table inquiry(
     i닉네임 varchar(20) not null unique,
     i비밀번호 int not null,
     문의내용 longtext not null,
-    문의등록날짜 date default now(),
+    문의등록날짜 datetime default now(),
     constraint foreign key(물품번호_pk) references product(물품번호_pk)
 );
 insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values ('coolguy12', 1234, '게이밍 키보드', 45000, 'LED 백라이트가 있는 기계식 키보드');
@@ -33,3 +34,6 @@ insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)va
 insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)values (3, 'musiclover', 3333, '완충 시 몇 시간 사용 가능한가요?');
 insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)values (4, 'catmom', 4444, '고양이 집 사이즈가 어떻게 되나요?');
 insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)values (5, 'student777', 5555, '교재는 몇 년도 버전인가요?');
+
+select * from product;
+select * from inquiry;
