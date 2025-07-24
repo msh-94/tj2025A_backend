@@ -41,4 +41,12 @@ public class BankController { // class start
         AccountDto result = accountDao.getMoney(dto);
         return result.getMoney();
     }// func end
+
+    // 계좌이체 기능
+    public boolean transfer(String post , int apassword , String get , int money){
+        AccountDto dto1 = new AccountDto(0,post,apassword,money);
+        AccountDto dto2 = new AccountDto(0,get,0,money);
+        boolean result = accountDao.transfer(dto1,dto2,money);
+        return result;
+    }// func end
 }// class end

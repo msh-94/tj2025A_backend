@@ -30,7 +30,7 @@ public class BankView { // class start
                 else if (i1 == 2) { inMoney(); }
                 else if (i1 == 3) { outMoney(); }
                 else if (i1 == 4) { getMoney(); }
-                else if (i1 == 5) {  }
+                else if (i1 == 5) { transfer(); }
                 else if (i1 == 6) {  }
                 else { System.out.println("[경고] 존재하지 않는 번호입니다."); } // if end
             }catch (InputMismatchException e){
@@ -91,5 +91,20 @@ public class BankView { // class start
         }else {
             System.out.println("[잔고] "+result+"원");
         }// if end
+    }// func end
+
+    // 계좌이체 뷰
+    public void transfer(){
+        System.out.print("보내는 분 계좌번호 : ");
+        String post = scan.next();
+        System.out.print("비밀번호 : ");
+        int apassword = scan.nextInt();
+        System.out.print("받는 분 계좌번호 : ");
+        String get = scan.next();
+        System.out.print("이체할 금액 : ");
+        int money = scan.nextInt();
+        boolean result = bankController.transfer(post,apassword,get,money);
+        if (result){ System.out.println("[안내] 이체가 완료되었습니다."); } // if end
+        else { System.out.println("[경고] 이체가 실패하였습니다"); } // else end
     }// func end
 }// class end
