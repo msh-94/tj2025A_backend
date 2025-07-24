@@ -35,5 +35,10 @@ public class BankController { // class start
         return result;
     }// func end
 
-
+    // 잔고조회 기능
+    public int getMoney(String banknum , int apassword){
+        AccountDto dto = new AccountDto(banknum,apassword);
+        AccountDto result = accountDao.getMoney(dto);
+        return result.getMoney();
+    }// func end
 }// class end

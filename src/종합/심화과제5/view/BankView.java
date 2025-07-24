@@ -29,7 +29,7 @@ public class BankView { // class start
                 if (i1 == 1) { bankAdd(); }
                 else if (i1 == 2) { inMoney(); }
                 else if (i1 == 3) { outMoney(); }
-                else if (i1 == 4) {  }
+                else if (i1 == 4) { getMoney(); }
                 else if (i1 == 5) {  }
                 else if (i1 == 6) {  }
                 else { System.out.println("[경고] 존재하지 않는 번호입니다."); } // if end
@@ -77,5 +77,19 @@ public class BankView { // class start
         boolean result = bankController.outMoney(banknum,apassword,money);
         if (result){ System.out.println("[안내] 출금이 완료되었습니다."); } // if end
         else { System.out.println("[경고] 출금이 실패하였습니다"); } // else end
+    }// func end
+
+    // 잔고조회 뷰
+    public void getMoney(){
+        System.out.print("계좌번호 : ");
+        String banknum = scan.next();
+        System.out.print("비밀번호 : ");
+        int apassword = scan.nextInt();
+        int result = bankController.getMoney(banknum,apassword);
+        if (result < 0){
+            System.out.println("[경고] 조회에 실패하였습니다.");
+        }else {
+            System.out.println("[잔고] "+result+"원");
+        }// if end
     }// func end
 }// class end
