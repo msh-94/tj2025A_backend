@@ -11,7 +11,6 @@ create table account(
     constraint primary key(banknum)    
 );
 
-
 create table accountLog(
 	logno int auto_increment ,
     banknump varchar(30) ,
@@ -24,6 +23,7 @@ create table accountLog(
     constraint foreign key(banknumr) references account(banknum),
     constraint primary key(logno)
 );
-
+delete from account;
+delete from accountLog;
 select * from account;
 select * from accountLog;
