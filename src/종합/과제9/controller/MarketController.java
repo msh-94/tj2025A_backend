@@ -68,4 +68,10 @@ public class MarketController { // class start
         ArrayList<ProductDto> result = productDao.getRank();
         return result;
     }// func end
+
+    // 검색기능
+    public ArrayList<ProductDto> pSearch(String 검색어){
+        ArrayList<ProductDto> result = productDao.pSearch(검색어);
+        return result;
+    }// func end
 }// class end

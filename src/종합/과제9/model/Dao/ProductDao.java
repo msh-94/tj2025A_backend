@@ -132,7 +132,22 @@ public class ProductDao { // class start
     public ArrayList<ProductDto> pSearch(String 검색어){
         ArrayList<ProductDto> dtoList = new ArrayList<>();
         try{
-            String sql = "select"
+            String sql = "select * from product where 물품명 like '%?%' or 설명 like '%?%'";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1,검색어);
+            ps.setString(2,검색어);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                ProductDto dto = new ProductDto();
+                dto.set물품번호(rs.getInt("물품번호_pk"));
+                dto.set물품명(rs.getString("물품명"));
+                dto.set가격(rs.getInt("가격"));
+                dto.set닉네임(rs.getString("닉네임"));
+                dto.set등록날짜(rs.getString("등록날짜"));
+                dto.set판매여부(rs.getString("판매여부"));
+                dtoList.add(dto);
+            }// while end
         } catch (Exception e) { System.out.println(e); }
-    }
+        return dtoList;
+    }// func end
 }// class end

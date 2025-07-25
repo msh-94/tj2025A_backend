@@ -34,9 +34,9 @@ public class MarketView { // class start
                 else if (choose == 3){ productUpdate(); }
                 else if (choose == 4){ productDelete(); }
                 else if (choose == 5){ inquiryAdd(); }
-                else if (choose == 6){ }
-                else if (choose == 7){ }
-                else if (choose == 8){ }
+                else if (choose == 6){ getProduct(); }
+                else if (choose == 7){ getRank(); }
+                else if (choose == 8){ pSearch(); }
                 else { System.out.println("[경고] 존재하지 않는 번호 입니다"); } //if end
             }catch (InputMismatchException e){
                 System.out.println("[경고] 타입이 일치하지 않습니다. ");
@@ -137,6 +137,17 @@ public class MarketView { // class start
         ArrayList<ProductDto> dtos = mc.getRank();
         for (ProductDto pdto : dtos){
             System.out.printf("%d \t %s \t %d \n",++등수,pdto.get닉네임(),pdto.get가격());
+        }// for end
+    }// func end
+
+    // 검색 뷰
+    public void pSearch(){
+        System.out.print("검색 : ");  String 검색어 = scan.next();
+        ArrayList<ProductDto> result = mc.pSearch(검색어);
+        System.out.println("물품번호 \t 물품명 \t 가격 \t 닉네임 \t 등록일 \t 판매여부");
+        for (ProductDto d : result){
+            System.out.printf("%d \t %s \t %d \t %s \t %s \t %s \n",d.get물품번호(),d.get물품명(),d.get가격(),
+                    d.get닉네임(),d.get등록날짜(),d.get판매여부());
         }// for end
     }// func end
 }// class end
