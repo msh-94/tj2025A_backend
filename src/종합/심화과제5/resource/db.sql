@@ -17,9 +17,9 @@ create table accountLog(
     banknump varchar(30) ,
     banknumr varchar(30) ,
     ltime datetime default now(),
-    content varchar(5) ,
-    transMoney varchar(20),
-    nowMoney int ,
+    content varchar(5) not null ,
+    transMoney varchar(20) not null,
+    nowMoney int not null,
     constraint foreign key(banknump) references account(banknum),
     constraint foreign key(banknumr) references account(banknum),
     constraint primary key(logno)
