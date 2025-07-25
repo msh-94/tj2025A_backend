@@ -103,10 +103,12 @@ public class ProductDao { // class start
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setInt(1,물품번호);
             ResultSet rs = ps.executeQuery();
-            ProductDto dto = new ProductDto(물품번호,rs.getString("닉네임"),rs.getInt("비밀번호"),
-                    rs.getString("물품명"),rs.getInt("가격"),rs.getString("설명"),
-                    rs.getString("판매여부"),rs.getString("등록날짜"));
-            return dto;
+            if (rs.next()){
+                ProductDto dto = new ProductDto(rs.getInt("물품번호_pk"),rs.getString("닉네임"),rs.getInt("비밀번호"),
+                        rs.getString("물품명"),rs.getInt("가격"),rs.getString("설명"),
+                        rs.getString("판매여부"),rs.getString("등록날짜"));
+                return dto;
+            }// if end
         } catch (Exception e) { System.out.println(e); }
         return null;
     }// func end
@@ -132,10 +134,10 @@ public class ProductDao { // class start
     public ArrayList<ProductDto> pSearch(String 검색어){
         ArrayList<ProductDto> dtoList = new ArrayList<>();
         try{
-            String sql = "select * from product where 물품명 like '%?%' or 설명 like '%?%'";
+            String sql = "select * from product where 물품명 like ? or 설명 like ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1,검색어);
-            ps.setString(2,검색어);
+            ps.setString(1,"%"+검색어+"%");
+            ps.setString(2,"%"+검색어+"%");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 ProductDto dto = new ProductDto();
