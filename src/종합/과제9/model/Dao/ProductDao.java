@@ -95,4 +95,44 @@ public class ProductDao { // class start
         } catch (Exception e) { System.out.println(e); } // try end
         return false;
     }// func end
+
+    // 특정물품 조회 기능
+    public ProductDto getProduct(int 물품번호){
+        try{
+            String sql = "select * from product where 물품번호_pk = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,물품번호);
+            ResultSet rs = ps.executeQuery();
+            ProductDto dto = new ProductDto(물품번호,rs.getString("닉네임"),rs.getInt("비밀번호"),
+                    rs.getString("물품명"),rs.getInt("가격"),rs.getString("설명"),
+                    rs.getString("판매여부"),rs.getString("등록날짜"));
+            return dto;
+        } catch (Exception e) { System.out.println(e); }
+        return null;
+    }// func end
+
+    // 랭킹조회 기능
+    public ArrayList<ProductDto> getRank(){
+        ArrayList<ProductDto> dtoList = new ArrayList<>();
+        try{
+            String sql = "select 닉네임,count(등록날짜) as 등록수 from product group by 닉네임 order by 등록수 desc limit 0 ,10";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                ProductDto dto = new ProductDto();
+                dto.set닉네임(rs.getString("닉네임"));
+                dto.set가격(rs.getInt("등록수"));
+                dtoList.add(dto);
+            }// while end
+        } catch (Exception e) { System.out.println(e); } // try end
+        return dtoList;
+    }// func end
+
+    // 검색 기능
+    public ArrayList<ProductDto> pSearch(String 검색어){
+        ArrayList<ProductDto> dtoList = new ArrayList<>();
+        try{
+            String sql = "select"
+        } catch (Exception e) { System.out.println(e); }
+    }
 }// class end

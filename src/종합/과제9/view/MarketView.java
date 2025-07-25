@@ -1,6 +1,7 @@
 package 종합.과제9.view; // 패키지명
 
 import 종합.과제9.controller.MarketController;
+import 종합.과제9.model.Dto.InquiryDto;
 import 종합.과제9.model.Dto.ProductDto;
 
 import java.util.ArrayList;
@@ -32,7 +33,7 @@ public class MarketView { // class start
                 else if (choose == 2){ getProductList(); }
                 else if (choose == 3){ productUpdate(); }
                 else if (choose == 4){ productDelete(); }
-                else if (choose == 5){ }
+                else if (choose == 5){ inquiryAdd(); }
                 else if (choose == 6){ }
                 else if (choose == 7){ }
                 else if (choose == 8){ }
@@ -97,5 +98,45 @@ public class MarketView { // class start
         }else {
             System.out.println("[경고] 삭제가 실패하였습니다.");
         }//if end
+    }// func end
+
+    // 문의 등록 뷰
+    public void inquiryAdd(){
+        System.out.print("문의자 닉네임 : ");     String 닉네임 = scan.next();
+        System.out.print("문의자 비밀번호 : ");    int 비밀번호 = scan.nextInt();  scan.nextLine();
+        System.out.print("문의 내용 : ");       String 내용 = scan.nextLine();
+        boolean result = mc.inquiryAdd(닉네임,비밀번호,내용);
+        if (result){
+            System.out.println("[안내] 문의 등록이 완료되었습니다.");
+        }else {
+            System.out.println("[경고] 문의 등록이 실패하였습니다.");
+        }// if end
+    } // func end
+
+    // 특정물품 조회기능 뷰
+    public void getProduct(){
+        System.out.print("조회할 물품번호 : ");    int 물품번호 = scan.nextInt();
+        ProductDto dto = mc.getProduct(물품번호);
+        ArrayList<InquiryDto> dtoList = mc.getInquiry(물품번호);
+        System.out.println("물품번호 \t 물품명 \t 가격 \t 닉네임 \t 등록일 \t 판매여부");
+        System.out.printf("%d \t %s \t %d \t %s \t %s \t %s \n",dto.get물품번호(),dto.get물품명(),dto.get가격(),dto.get닉네임(),
+                dto.get등록날짜(),dto.get판매여부());
+        System.out.println("-----------------------------------------------------------------------------------");
+        System.out.println("------------------------------- 문의 내역 ------------------------------------------");
+        System.out.println("번호 \t 닉네임 \t 내용 \t 등록날짜");
+        for (InquiryDto idto : dtoList){
+            System.out.printf("%d \t %s \t %s \t %s \n",idto.get문의번호(),idto.getI닉네임(),idto.get문의내용(),idto.get문의날짜());
+        }// for end
+    }// func end
+
+    // 랭킹 뷰
+    public void getRank(){
+        System.out.println("********* 랭킹 ********");
+        System.out.println("등수 \t 닉네임 \t 등록수");
+        int 등수 = 0;
+        ArrayList<ProductDto> dtos = mc.getRank();
+        for (ProductDto pdto : dtos){
+            System.out.printf("%d \t %s \t %d \n",++등수,pdto.get닉네임(),pdto.get가격());
+        }// for end
     }// func end
 }// class end
