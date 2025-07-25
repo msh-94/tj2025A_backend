@@ -40,3 +40,19 @@ insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)va
 
 select * from product;
 select * from inquiry;
+
+# 랭킹확인용
+insert into product (닉네임, 비밀번호, 물품명, 가격, 설명) values 
+('coolguy12', 1234, '마우스패드', 5000, '넓은 사이즈, 방수 소재'),
+('coolguy12', 1234, '마우스패드1', 5000, '넓은 사이즈1, 방수 소재1'),
+('coolguy12', 1234, '마우스패드2', 5000, '넓은 사이즈2, 방수 소재2'),
+('coolguy12', 1234, '마우스패드3', 5000, '넓은 사이즈3, 방수 소재3'),
+('coolguy12', 1234, 'USB 허브', 7000, '4포트 지원');
+insert into product (닉네임, 비밀번호, 물품명, 가격, 설명) values 
+('smartgirl88', 5678, '스마트폰 케이스', 3000, '핑크색, 새제품');
+insert into product (닉네임, 비밀번호, 물품명, 가격, 설명) values 
+('gamerkid', 1111, '게임패드', 25000, '블루투스 연결 가능'),
+('gamerkid', 1111, '게이밍 의자', 85000, '허리 지지형'),
+('gamerkid', 1111, '웹캠', 30000, '1080p 화질');
+insert into product (닉네임, 비밀번호, 물품명, 가격, 설명) values 
+('newuser1', 1111, '핸드믹서', 10000, '제과제빵용');
