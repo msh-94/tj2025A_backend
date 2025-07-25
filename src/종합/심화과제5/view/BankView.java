@@ -1,7 +1,9 @@
 package 종합.심화과제5.view;// 패키지명
 
 import 종합.심화과제5.controller.BankController;
+import 종합.심화과제5.model.dto.AccountLogDto;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -31,7 +33,7 @@ public class BankView { // class start
                 else if (i1 == 3) { outMoney(); }
                 else if (i1 == 4) { getMoney(); }
                 else if (i1 == 5) { transfer(); }
-                else if (i1 == 6) {  }
+                else if (i1 == 6) { getLogList(); }
                 else { System.out.println("[경고] 존재하지 않는 번호입니다."); } // if end
             }catch (InputMismatchException e){
                 System.out.println("[경고] 입력타입이 일치하지 않습니다.");
@@ -106,5 +108,15 @@ public class BankView { // class start
         boolean result = bankController.transfer(post,apassword,get,money);
         if (result){ System.out.println("[안내] 이체가 완료되었습니다."); } // if end
         else { System.out.println("[경고] 이체가 실패하였습니다"); } // else end
+    }// func end
+
+    // 거래내역 뷰
+    public void getLogList(){
+        System.out.print("계좌번호 : ");     String 계좌번호 = scan.next();
+        System.out.print("비밀번호 : ");    int 비밀번호 = scan.nextInt();
+        ArrayList<AccountLogDto> result = bankController.getLogList(계좌번호,비밀번호);
+        for (AccountLogDto dto : result){
+            System.out.printf("[%s]\t%s |  %s |  잔액 : %d원\n",dto.getTime(),dto.getContent(),dto.getTransMoney(),dto.getNowMoney());
+        }// for end
     }// func end
 }// class end

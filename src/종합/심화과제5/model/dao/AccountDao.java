@@ -71,10 +71,9 @@ public class AccountDao { // class start
     // 잔고 조회 기능
     public AccountDto getMoney(AccountDto dto){
         try{
-            String sql = "select * from account where banknum = ? and apassword = ?";
+            String sql = "select * from account where banknum = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,dto.getBankNum());
-            ps.setInt(2,dto.getaPassword());
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 AccountDto dtos = new AccountDto();
