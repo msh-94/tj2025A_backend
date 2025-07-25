@@ -27,22 +27,26 @@ public class BankController { // class start
     // 입금기능
     public boolean inMoney(String banknum , int apassword , int money){
         AccountDto dto = new AccountDto(0,banknum,apassword,money);
-        AccountDto dto2 = new AccountDto(banknum,apassword);
-        int now = accountDao.getMoney(dto2).getMoney();
-        AccountLogDto ldto = new AccountLogDto(0,banknum,null,null,"입금","+"+money,money+now);
-        accountLogDao.logAdd(ldto);
         boolean result = accountDao.inMoney(dto);
+        if (result){
+            AccountDto dto2 = new AccountDto(banknum,apassword);
+            int now = accountDao.getMoney(dto2).getMoney();
+            AccountLogDto ldto = new AccountLogDto(0,banknum,null,null,"입금","+"+money,now);
+            accountLogDao.logAdd(ldto);
+        }// if end
         return result;
     }// func end
 
     // 출금기능
-    public boolean outMoney(String banknum , int apassword , int money){
+    public int outMoney(String banknum , int apassword , int money){
         AccountDto dto = new AccountDto(0,banknum,apassword,money);
-        AccountDto dto2 = new AccountDto(banknum,apassword);
-        int now = accountDao.getMoney(dto2).getMoney();
-        AccountLogDto ldto = new AccountLogDto(0,banknum,null,null,"출금","-"+money,now-money);
-        accountLogDao.logAdd(ldto);
-        boolean result = accountDao.outMoney(dto);
+        int result = accountDao.outMoney(dto);
+        if (result == 1){
+            AccountDto dto2 = new AccountDto(banknum,apassword);
+            int now = accountDao.getMoney(dto2).getMoney();
+            AccountLogDto ldto = new AccountLogDto(0,banknum,null,null,"출금","-"+money,now);
+            accountLogDao.logAdd(ldto);
+        }// if end
         return result;
     }// func end
 
@@ -54,28 +58,27 @@ public class BankController { // class start
     }// func end
 
     // 계좌이체 기능
-    public boolean transfer(String post , int apassword , String get , int money){
+    public int transfer(String post , int apassword , String get , int money){
         AccountDto dto1 = new AccountDto(0,post,apassword,money);
         AccountDto dto2 = new AccountDto(0,get,0,money);
+        int result = accountDao.transfer(dto1,dto2,money);
         AccountDto dto3 = new AccountDto(post,apassword);
-        AccountDto dto4 = new AccountDto();
-        dto4.setBankNum(get);
-        int now2 = accountDao.getMoney(dto4).getMoney();
         int now = accountDao.getMoney(dto3).getMoney();
-        AccountLogDto ldto = new AccountLogDto(0,post,null,null,"이체","-"+money,now-money);
-        AccountLogDto ldto2 = new AccountLogDto(0,null,get,null,"이체","+"+money,now2+money);
-        accountLogDao.logAdd(ldto);
-        accountLogDao.getLogAdd(ldto2);
-        boolean result = accountDao.transfer(dto1,dto2,money);
+        int now2 = accountDao.getMoneys(get).getMoney();
+        if (result == 1){
+            AccountLogDto ldto = new AccountLogDto(0,post,null,null,"이체","-"+money,now);
+            AccountLogDto ldto2 = new AccountLogDto(0,null,get,null,"이체","+"+money,now2);
+        }// if end
         return result;
     }// func end
 
     // 거래내역 출력 기능
     public ArrayList<AccountLogDto> getLogList(String 계좌번호 , int 비밀번호){
         AccountLogDto dto = new AccountLogDto();
+        AccountDto dto1 = new AccountDto(계좌번호,비밀번호);
         dto.setPostbank(계좌번호);
         dto.setReceivebank(계좌번호);
-        ArrayList<AccountLogDto> result = accountLogDao.getLogList(dto);
+        ArrayList<AccountLogDto> result = accountLogDao.getLogList(dto,dto1);
         return result;
     }// func end
 }// class end

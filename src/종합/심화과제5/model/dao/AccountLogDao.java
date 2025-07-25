@@ -1,5 +1,6 @@
 package 종합.심화과제5.model.dao; // 패키지명
 
+import 종합.심화과제5.model.dto.AccountDto;
 import 종합.심화과제5.model.dto.AccountLogDto;
 
 import java.sql.Connection;
@@ -36,7 +37,7 @@ public class AccountLogDao {// class start
             ps.setString(3,dto.getTransMoney());
             ps.setInt(4,dto.getNowMoney());
             int count = ps.executeUpdate();
-            if (count >= 1)return true;
+            if (count == 1)return true;
             return false;
         } catch (Exception e) { System.out.println(e); }// try end
         return false;
@@ -52,20 +53,21 @@ public class AccountLogDao {// class start
             ps.setString(3,dto.getTransMoney());
             ps.setInt(4,dto.getNowMoney());
             int count = ps.executeUpdate();
-            if (count >= 1)return true;
+            if (count == 1)return true;
             return false;
         } catch (Exception e) { System.out.println(e); }// try end
         return false;
     }// func end
 
     // 거래내역 조회 기능
-    public ArrayList<AccountLogDto> getLogList(AccountLogDto dto){
+    public ArrayList<AccountLogDto> getLogList(AccountLogDto dto , AccountDto dto1){
         ArrayList<AccountLogDto> logList = new ArrayList<>();
         try{
-            String sql = "select * from accountLog where banknump = ? or banknumr = ?";
+            String sql = "select * from accountLog join account where (banknump = ? or banknumr = ?) and apassword = ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1,dto.getPostbank());
             ps.setString(2,dto.getReceivebank());
+            ps.setInt(3,dto1.getaPassword());
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 AccountLogDto ldto = new AccountLogDto();

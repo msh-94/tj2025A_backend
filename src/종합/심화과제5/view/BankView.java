@@ -76,8 +76,9 @@ public class BankView { // class start
         int apassword = scan.nextInt();
         System.out.print("출금액 : ");
         int money = scan.nextInt();
-        boolean result = bankController.outMoney(banknum,apassword,money);
-        if (result){ System.out.println("[안내] 출금이 완료되었습니다."); } // if end
+        int result = bankController.outMoney(banknum,apassword,money);
+        if (result == 1){ System.out.println("[안내] 출금이 완료되었습니다."); } // if end
+        else if (result == 2){ System.out.println("[경고] 금액이 부족합니다"); } // if end
         else { System.out.println("[경고] 출금이 실패하였습니다"); } // else end
     }// func end
 
@@ -105,8 +106,9 @@ public class BankView { // class start
         String get = scan.next();
         System.out.print("이체할 금액 : ");
         int money = scan.nextInt();
-        boolean result = bankController.transfer(post,apassword,get,money);
-        if (result){ System.out.println("[안내] 이체가 완료되었습니다."); } // if end
+        int result = bankController.transfer(post,apassword,get,money);
+        if (result == 1){ System.out.println("[안내] 이체가 완료되었습니다."); } // if end
+        else if (result == 2) { System.out.println("[경고] 금액이 부족합니다"); } // if end
         else { System.out.println("[경고] 이체가 실패하였습니다"); } // else end
     }// func end
 
