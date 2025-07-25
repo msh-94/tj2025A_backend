@@ -81,4 +81,18 @@ public class ProductDao { // class start
         } catch (Exception e) { System.out.println(e); }// try end
         return false;
     }// func end
+
+    // 물품 삭제 기능
+    public boolean productDelete(ProductDto dto){
+        try{
+            String sql = "delete from product where 물품번호_pk = ? and 비밀번호 = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1,dto.get물품번호());
+            ps.setInt(2,dto.get비밀번호());
+            int count = ps.executeUpdate();
+            if (count == 1)return true;
+            return false;
+        } catch (Exception e) { System.out.println(e); } // try end
+        return false;
+    }// func end
 }// class end

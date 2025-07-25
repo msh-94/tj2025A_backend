@@ -33,4 +33,11 @@ public class MarketController { // class start
         boolean result = productDao.productUpdate(dto);
         return result;
     }// func end
+
+    // 물품 삭제 기능
+    public boolean productDelete(int 물품번호, int 비밀번호){
+        ProductDto dto = new ProductDto(물품번호,null,비밀번호,null,0,null,null,null);
+        boolean result = productDao.productDelete(dto);
+        return result;
+    }// func end
 }// class end
