@@ -1,5 +1,14 @@
 package day20; // 패키지명
 
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 class BookDto{
 
 }
@@ -36,6 +45,42 @@ public class Example1 {// class start
                     1) .toString()  : 자료(객체)의 주소값 반환 함수
                     2) .equals()    : 자료(객체)의 비교 결과 반환 함수
                     3) .hashCode()  : 자료(객체)를 정수로 반환 함수
+
+            2. Class 클래스 : 클래스의 정보를 담는 클래스
+                특징 : 리플렉션( 실행중 객체 할당 , 분석 )
+                주요메소드
+                    1) Class.forName()      : 실행중 지정한 클래스 로드
+                    2) .getFields()         : 지정한 인스턴스의 모든 멤버변수 (정보)반환
+                       .getConstructors()   : 지정한 인스턴스의 모든 생성자 (정보)반환
+                       .getMethods()        : 지정한 인스턴스의 모든 메소드 (정보)반환
+
+            3. Wrapper 클래스 : 8가지 기본타입을 참조타입으로 사용
+                특징 : 기본타입은 메소드(기능)이 없어서 다양한 기능 제공받는다.
+                종류 : Byte,Short,Integer,Long,Boolean,Float,Double
+                주요메소드 :
+                    1) .parseXXX( "문자열" ) : 문자열 ---> XXX 타입변환 메소드
+                    2) String.valueOf( 자료 ); * 자료 --> 문자열 변환
+
+            4. LocalDate 클래스 : 시스템의 날짜/시간 정보 클래스
+                특징 : 날짜/시간 정의/형식/세부/계산
+                주요메소드
+                    1. LocalDateTime.now()                  : 시스템의 현재 날짜/시간 를 갖는 LocalDateTime객체 반환
+                    2. LocalDateTime.of(년,월,일,시,분,초)    : 지정한 값으로 날짜/시간을 갖는 LocalDateTime객체 반환
+                    3. .getYear()           : 객체내 연도 (int)반환
+                    4. .getMonthValue()     : 객체내 월 (int)반환
+                    5. .getDayOfMonth()     : 객체내 일 (int)반환
+                    6. .getHour()           : 객체내 시 (int)반환
+                    7. .getMinute()         : 객체내 분 (int)반환
+                    8. .getSecond()         : 객체내 초 (int)반환
+                    9. .format( DateTimeFormatter객체 ) : 지정한 현식으로 날짜/시간 문자열로 반환
+                    + DateTimeFormatter 날짜/시간 형식 변환 클래스
+                    DateTimeFormatter 변수명 = DateTimeFormatter.ofPattern();
+                    + 패턴 : y연도 M월 d일 h시 m분 s초
+                    10. .plusDays( 일수 )  : 객체내 일수를 더한 결과를 LocalDateTime 반환
+                    11. .minusDays( 일수 ) : 객체내 일수를 뺀 결과를 LocalDateTime 반환
+
+
+
         */
 
         // [1] Object
@@ -78,6 +123,83 @@ public class Example1 {// class start
         System.out.println( o10.hashCode() );   // 381259350
         System.out.println( o11.hashCode() );   // 764977973
 
+        // [2] Class
+        String str = new String();
+        Class c = str.getClass();
+        System.out.println(c);  // class java.lang.String
+        Integer values = 3;
+        Class c2 = values.getClass();
+        System.out.println(c2); // class java.lang.Integer
+
+        // 1. Class.forName("클래스경로"); : 지정한 클래스 경로에서 클래스를 로드/불러오기 메소드 *일반예외
+        // -> 지정한 클래스경로에서 클래스를 로드 실패시 예외 발생
+        try{Class.forName("java.lang.String");}
+        catch (ClassNotFoundException e){ }
+
+        // 2. .getFields() : 클래스/타입의 모든 멤버변수명 반환
+        // .getConstructors() : 클래스/타입의 모든 생성자명 반환
+        // .getMethods() : 클래스/타입의 모든 메소드명 반환
+        Field[] fields = c.getFields();
+        for (int i = 0; i < fields.length; i++){
+            System.out.println(fields[i]);
+        }
+        Constructor[] constructors = c.getConstructors();
+        for (int i = 0; i < constructors.length; i++){
+            System.out.println(constructors[i]);
+        }
+        Method[] methods = c.getMethods();
+        for (int i = 0; i < methods.length; i++){
+            System.out.println(methods[i]);
+        }
+
+        // [3]
+        int value1 = 100;        // 자료 : 100 , 타입 : int
+        Integer value2 = 100;   // 자료 : 100 , 타입 : Integer
+        // 1. 언박싱 과 오토박싱
+        Integer value3 = value1;    // 오토박싱 : int -> Integer
+        int value4 = value2;        // 언박싱 : Integer -> int
+        // 2. ********* 문자열 --[ CSV/HTTP ] --> 기본타입 변환 *********
+        int val1 = Integer.parseInt("100"); // "100" --> 100
+        double val2 = Double.parseDouble("3.14"); // "3.14" --> 3.14
+        float val3 = Float.parseFloat("3.14");
+        byte val4 = Byte.parseByte("100");
+        short val5 = Short.parseShort("100");
+        long val6 = Long.parseLong("100");
+        boolean val7 = Boolean.parseBoolean("true");
+        // 기본타입 --> 문자열 변환
+        String s1 = 100+""; // 방법1] 자료+"" , 값+문자열 --> 문자열
+        String s2 = String.valueOf(100); // 방법2] String.valueOf( 자료 );
+
+        // [4]
+        // 1. 현재 날짜와 시간 생성
+        LocalDate localDate = LocalDate.now();
+        System.out.println(localDate); // 2025-07-25
+        LocalTime localTime = LocalTime.now();
+        System.out.println(localTime); // 11:36:24.805252100 : 시:분:초.나노초
+        LocalDateTime localDateTime = LocalDateTime.now();
+        System.out.println(localDateTime); // 2025-07-25T11:37:29.128159400
+        // 2. 지정한 날짜/시간 생성 , of( 년 , 월 , 일 , 시 , 분 , 초 );
+        LocalDateTime.of(2025,07,25,11,38,15);
+        // 3. 날짜/시간 형식 변경
+            // 패턴 : y연도 , M월 , d일 , h시 , m분 , s초
+            // 날짜/시간객체.format(형식객체) : 지정한 형식으로 변형된 문자열 반환
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy년 MM월 dd일 hh시 mm분 ss초");
+        String today = localDateTime.format(formatter);
+        System.out.println(today); // 2025년 07월 25일 11시 48분 45초
+
+        // 4. 날짜 세부 정보
+        int year = localDateTime.getYear(); // 연도
+        int month = localDateTime.getMonthValue(); // 월
+        int day = localDateTime.getDayOfMonth(); // 일
+        int hour = localDateTime.getHour(); // 시
+        int minute = localDateTime.getMinute(); // 분
+        int seconde = localDateTime.getSecond(); // 초
+
+        // 5. 날짜 계산
+        LocalDateTime plusDateTime = localDateTime.plusDays( 10 );
+        System.out.println(plusDateTime); // 2025-08-04T11:48:45.719791400
+        LocalDateTime minusDateTime = localDateTime.minusDays( 30 );
+        System.out.println(minusDateTime); // 2025-06-25T11:49:35.754313200
 
     }// main end
 }// class end
