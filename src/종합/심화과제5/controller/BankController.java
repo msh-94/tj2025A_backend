@@ -17,6 +17,11 @@ public class BankController { // class start
     private AccountLogDao accountLogDao = AccountLogDao.getInstance();
     private AccountDao accountDao = AccountDao.getInstance();
 
+    /**
+     * @param banknum
+     * @param apassword
+     * @return boolean
+     */
     // 계좌등록 기능
     public boolean bankAdd(String banknum , int apassword){
         AccountDto dto = new AccountDto(banknum,apassword);
