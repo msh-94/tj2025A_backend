@@ -30,8 +30,8 @@ public class MarketView { // class start
                 int choose = scan.nextInt();
                 if (choose == 1){ productAdd(); }
                 else if (choose == 2){ getProductList(); }
-                else if (choose == 3){ }
-                else if (choose == 4){ }
+                else if (choose == 3){ productUpdate(); }
+                else if (choose == 4){ productDelete(); }
                 else if (choose == 5){ }
                 else if (choose == 6){ }
                 else if (choose == 7){ }
@@ -85,5 +85,17 @@ public class MarketView { // class start
         }else {
             System.out.println("[경고] 수정이 실패하였습니다.");
         }// if end
+    }// func end
+
+    // 물품 삭제 뷰
+    public void productDelete(){
+        System.out.print("삭제할 물품번호 : ");       int 물품번호 = scan.nextInt();
+        System.out.print("비밀번호 : ");            int 비밀번호 = scan.nextInt();
+        boolean result = mc.productDelete(물품번호,비밀번호);
+        if (result){
+            System.out.println("[안내] 삭제가 완료되었습니다.");
+        }else {
+            System.out.println("[경고] 삭제가 실패하였습니다.");
+        }//if end
     }// func end
 }// class end
