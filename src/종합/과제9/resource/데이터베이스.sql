@@ -11,7 +11,7 @@ create table product(
     가격 int not null,
     설명 longtext ,
     판매여부 varchar(4) default '판매중',
-    등록날짜 datetime default now()
+    등록날짜 date default (current_date())
 );
 
 create table inquiry(
@@ -20,7 +20,7 @@ create table inquiry(
     i닉네임 varchar(20) not null unique,
     i비밀번호 int not null,
     문의내용 longtext not null,
-    문의등록날짜 datetime default now(),
+    문의등록날짜 date default (current_date()),
     constraint foreign key(물품번호_pk) references product(물품번호_pk)
 );
 insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values ('coolguy12', 1234, '게이밍 키보드', 45000, 'LED 백라이트가 있는 기계식 키보드');

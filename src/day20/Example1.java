@@ -78,9 +78,6 @@ public class Example1 {// class start
                     + 패턴 : y연도 M월 d일 h시 m분 s초
                     10. .plusDays( 일수 )  : 객체내 일수를 더한 결과를 LocalDateTime 반환
                     11. .minusDays( 일수 ) : 객체내 일수를 뺀 결과를 LocalDateTime 반환
-
-
-
         */
 
         // [1] Object
