@@ -5,7 +5,7 @@ set SQL_SAFE_UPDATES = 0;
 
 create table product(
 	물품번호_pk int auto_increment primary key,
-    닉네임 varchar(20) not null unique,
+    닉네임 varchar(20) not null ,
     비밀번호 int not null,
     물품명 varchar(30) not null,
     가격 int not null,
@@ -28,6 +28,9 @@ insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values (
 insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values ('techman21', 9999, '블루투스 스피커', 23000, '야외 사용 가능, 충전식 배터리 포함');
 insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values ('lovelycat', 4321, '고양이 집', 15000, '겨울용 보온 집, 새제품');
 insert into product (닉네임, 비밀번호, 물품명, 가격, 설명)values ('bookworm55', 7777, '토익 교재 세트', 10000, '해설집 포함, 형광펜 표시 약간 있음');
+
+
+
 
 insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)values (1, 'asker101', 1111, '이 키보드에는 숫자패드도 포함되어 있나요?');
 insert into inquiry (물품번호_pk, i닉네임, i비밀번호, 문의내용)values (2, 'phonefan', 2222, '액정 깨진 부분은 없나요?');
