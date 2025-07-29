@@ -51,6 +51,6 @@
     3) 내 저장소에서 가져올 깃 저장소명 선택하여 --> [복제]
 3. 깃허브의 commit 계정 수정 하기
     1) 인텔리제이 왼쪽 하단 메뉴 --> [터미널 alt+f12]
-    2) 터미널 상단에[v] 아이콘 클릭 --> [git bash]
+    2) 터미널 상단에[v] 아이콘 클릭 --> [git bash]+-
         git config --global user.name 본인깃아이디
         git config --global user.email 본인깃이메일
