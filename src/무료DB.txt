@@ -19,14 +19,6 @@
         password : [ Dashboard ] 확인한 password
         [ OK ]
 
-[ DAO 에서
-
-
-
-
-
-
-
 [ exe 파일 변경 ]
     1. 상단 메뉴 -> [파일] -> [ 프로젝트 구조 ]
     2. 왼쪽 메뉴 -> [아티펙트]클릭 -> [+] -> [JAR] -> [종속성 포함 모듈에서]
@@ -50,7 +42,6 @@
         [JRE] 탭
             min jre version : 1.8
     5. 상단 메뉴에 톱니바퀴[아이콘] 클릭 -> 설정파일 저장(아무거나) -> Successfully created C:\Users\TJ-BU-702-P23\Desktop\exam10.exe 출력되면 성공
-
 
 [ java 설치 ]
     1. jdk17 : https://www.oracle.com/java/technologies/javase/jdk17-archive-downloads.html
